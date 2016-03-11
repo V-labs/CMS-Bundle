@@ -1,0 +1,16 @@
+
+<ul>
+    {% for category in categories %}
+        <li>
+            {{ category.name }}
+            {% include 'VlabsCmsBundle:Front:Category\\list.html.twig' with {categories: category.children} %}
+            {% if category.posts|length %}
+                <ul>
+                    {% for post in category.posts %}
+                        <li><a href="{{ path('vlabs_cms_front_post_show', {id: post.id}) }}">{{ post.title }}</a></li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+        </li>
+    {% endfor %}
+</ul>

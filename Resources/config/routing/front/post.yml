@@ -1,0 +1,4 @@
+vlabs_cms_front_post_show:
+    path:     /{id}
+    defaults: { _controller: VlabsCmsBundle:Front\Post:show }
+    methods:  [GET]

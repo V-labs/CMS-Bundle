@@ -1,0 +1,7 @@
+vlabs_cms_admin_category:
+    resource: "@VlabsCmsBundle/Resources/config/routing/admin/category.yml"
+    prefix: /
+
+vlabs_cms_admin_post:
+    resource: "@VlabsCmsBundle/Resources/config/routing/admin/post.yml"
+    prefix: /post

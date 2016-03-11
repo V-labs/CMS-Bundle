@@ -1,0 +1,12 @@
+{% extends 'VlabsCmsBundle::base.html.twig' %}
+
+{% block stylesheets %}
+
+    {{ parent() }}
+
+    <link href="{{ asset('bundles/vlabscms/vendor/summernote/summernote.min.css') }}" type="text/css" rel="stylesheet"/>
+    <link href="{{ asset('bundles/vlabscms/vendor/select2/css/select2.min.css') }}" type="text/css" rel="stylesheet"/>
+    <link href="{{ asset('bundles/vlabscms/vendor/sweetalert/sweetalert.css') }}" type="text/css" rel="stylesheet"/>
+    <link href="{{ asset('bundles/vlabscms/css/admin.css') }}" type="text/css" rel="stylesheet"/>
+
+{% endblock %}

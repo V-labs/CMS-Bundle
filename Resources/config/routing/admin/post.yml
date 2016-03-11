@@ -1,0 +1,24 @@
+vlabs_cms_admin_post_new:
+    path:     /{id}/new
+    defaults: { _controller: "VlabsCmsBundle:Admin\Post:new" }
+    methods:  [GET,POST]
+
+vlabs_cms_admin_post_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "VlabsCmsBundle:Admin\Post:edit" }
+    methods:  [GET,PUT]
+
+vlabs_cms_admin_post_publish:
+    path:     /{id}/publish
+    defaults: { _controller: "VlabsCmsBundle:Admin\Post:publish" }
+    methods:  PUT
+
+vlabs_cms_admin_post_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "VlabsCmsBundle:Admin\Post:delete" }
+    methods:  DELETE
+
+vlabs_cms_admin_post_sort:
+    path:     /sort
+    defaults: { _controller: "VlabsCmsBundle:Admin\Post:sort" }
+    methods:  PUT

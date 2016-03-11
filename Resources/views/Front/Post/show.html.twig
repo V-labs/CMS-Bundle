@@ -1,0 +1,11 @@
+{% extends 'VlabsCmsBundle::base.html.twig' %}
+
+{% block body %}
+
+    <p class="pull-right">{{ post.publishedAt|date }}</p>
+    <h1>{{ post.title }}</h1>
+    <hr>
+
+    <div>{{ post.content }}</div>
+
+{% endblock %}

@@ -1,0 +1,15 @@
+{
+    "name": "vlabs/cms-bundle",
+    "license": "proprietary",
+    "type": "symfony-bundle",
+    "autoload": {
+        "psr-4": {
+            "Vlabs\\CmsBundle\\": ""
+        }
+    },
+    "require": {
+        "php": ">=5.3.9",
+        "symfony/symfony": "2.8.*",
+        "stof/doctrine-extensions-bundle": "^1.2"
+    }
+}
