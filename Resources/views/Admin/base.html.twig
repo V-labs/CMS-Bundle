@@ -4,9 +4,38 @@
 
     {{ parent() }}
 
+    <link href="{{ asset('bundles/vlabscms/vendor/font-awesome/css/font-awesome.min.css') }}" type="text/css" rel="stylesheet"/>
     <link href="{{ asset('bundles/vlabscms/vendor/summernote/summernote.min.css') }}" type="text/css" rel="stylesheet"/>
     <link href="{{ asset('bundles/vlabscms/vendor/select2/css/select2.min.css') }}" type="text/css" rel="stylesheet"/>
     <link href="{{ asset('bundles/vlabscms/vendor/sweetalert/sweetalert.css') }}" type="text/css" rel="stylesheet"/>
+
     <link href="{{ asset('bundles/vlabscms/css/admin.css') }}" type="text/css" rel="stylesheet"/>
+
+{% endblock %}
+
+{% block flash %}
+    {{ include('VlabsCmsBundle:Admin:flash.html.twig') }}
+{% endblock %}
+
+{% block javascripts %}
+
+    {{ parent() }}
+
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
+    <script src="{{ asset('bundles/vlabscms/vendor/jquery/jquery.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/vlabscms/vendor/jquery-ui/jquery-ui.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/vlabscms/vendor/bootstrap/js/bootstrap.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/vlabscms/vendor/select2/js/select2.full.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/vlabscms/vendor/bootstrap-confirmation/bootstrap-confirmation.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/vlabscms/vendor/summernote/summernote.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('bundles/vlabscms/vendor/sweetalert/sweetalert.min.js') }}" type="text/javascript"></script>
+
+    {% if app.request.locale == 'fr' %}
+        <script src="{{ asset('bundles/vlabscms/vendor/select2/js/i18n/fr.js') }}" type="text/javascript"></script>
+        <script src="{{ asset('bundles/vlabscms/vendor/summernote/lang/summernote-fr.min.js') }}" type="text/javascript"></script>
+    {% endif %}
+
+    <script src="{{ asset('bundles/vlabscms/js/admin.js') }}" type="text/javascript"></script>
 
 {% endblock %}

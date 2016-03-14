@@ -1,11 +1,10 @@
 {% extends 'VlabsCmsBundle::base.html.twig' %}
 
-{% block body %}
+{% block content %}
 
-    <p class="pull-right">{{ post.publishedAt|date }}</p>
     <h1>{{ post.title }}</h1>
     <hr>
-
-    <div>{{ post.content }}</div>
+    <div class="text-right">{{ post.publishedAt|localizeddate('long') }}</div>
+    <div>{{ post.content|raw }}</div>
 
 {% endblock %}

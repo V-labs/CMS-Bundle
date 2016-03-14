@@ -1,23 +1,29 @@
 vlabs_cms_admin_category_index:
     path: /
-    defaults: { _controller: VlabsCmsBundle:Admin\Category:index }
+    defaults: { _controller: VlabsCmsBundle:Admin/Category:index }
 
 vlabs_cms_admin_category_new:
     path:     /new
-    defaults: { _controller: "VlabsCmsBundle:Admin\Category:new" }
+    defaults: { _controller: "VlabsCmsBundle:Admin/Category:new" }
     methods:  POST
+    options:
+        expose: true
 
 vlabs_cms_admin_category_edit:
     path:     /{id}/edit
-    defaults: { _controller: "VlabsCmsBundle:Admin\Category:edit" }
+    defaults: { _controller: "VlabsCmsBundle:Admin/Category:edit" }
     methods:  [GET,PUT]
 
 vlabs_cms_admin_category_delete:
     path:     /{id}/delete
-    defaults: { _controller: "VlabsCmsBundle:Admin\Category:delete" }
+    defaults: { _controller: "VlabsCmsBundle:Admin/Category:delete" }
     methods:  DELETE
+    options:
+        expose: true
 
 vlabs_cms_admin_category_sort:
     path:     /sort
-    defaults: { _controller: "VlabsCmsBundle:Admin\Category:sort" }
+    defaults: { _controller: "VlabsCmsBundle:Admin/Category:sort" }
     methods:  PUT
+    options:
+        expose: true

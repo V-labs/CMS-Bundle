@@ -1,0 +1,23 @@
+<li data-item="post" id="{{ post.id }}">
+
+    <div class="pull-right">
+        {% if post.publishedAt %}
+            <i class="fa fa-fw fa-globe text-success vlabs-cms-cursor-pointer" data-toggle="tooltip" data-placement="left" data-title="{{ 'post_published_at_%date%_%hour%'|trans({'%date%': post.publishedAt|localizeddate('short', 'none'), '%hour%': post.publishedAt|localizeddate('none', 'short')}, 'vlabs_cms') }}" data-publish="post" data-id="{{ post.id }}" data-confirm="Dépublier"></i>
+        {% else %}
+            {% if post.unpublishedAt %}
+                <i class="fa fa-fw fa-globe text-danger vlabs-cms-cursor-pointer" data-toggle="tooltip" data-placement="left" data-title="{{ 'post_unpublished_at_%date%_%hour%'|trans({'%date%': post.publishedAt|localizeddate('short', 'none'), '%hour%': post.publishedAt|localizeddate('none', 'short')}, 'vlabs_cms') }}" data-publish="post" data-id="{{ post.id }}" data-confirm="Republier"></i>
+            {% else %}
+                <i class="fa fa-fw fa-globe text-danger vlabs-cms-cursor-pointer" data-toggle="tooltip" data-placement="left" data-title="{{ 'post_unpublished'|trans({}, 'vlabs_cms') }}" data-publish="post" data-id="{{ post.id }}" data-confirm="{{ 'publish'|trans({}, 'vlabs_cms') }}"></i>
+            {% endif %}
+        {% endif %}
+        <a href="{{ path('vlabs_cms_admin_post_edit', {id: post.id}) }}" class="vlabs-cms-icon">
+            <i class="fa fa-fw fa-pencil vlabs-cms-cursor-pointer" data-toggle="tooltip" data-placement="left" data-title="{{ 'edit'|trans({}, 'vlabs_cms') }}"></i>
+        </a>
+        <i class="fa fa-fw fa-trash vlabs-cms-cursor-pointer" data-toggle="tooltip" data-placement="left" data-title="{{ 'delete'|trans({}, 'vlabs_cms') }}" data-delete="post" data-id="{{ post.id }}" data-confirm="{{ 'confirm_delete'|trans({}, 'vlabs_cms') }}"></i>
+    </div>
+
+    <span class="label label-info">{{ 'post'|trans({}, 'vlabs_cms') }}</span>
+
+    <span>{{ post.title }}</span>
+
+</li>

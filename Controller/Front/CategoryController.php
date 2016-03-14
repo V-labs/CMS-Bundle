@@ -8,12 +8,12 @@ class CategoryController extends Controller
 {
     public function indexAction()
     {
+        $categoryClass = $this->getParameter('vlabs_cms.category_class');
         $em = $this->getDoctrine()->getManager();
+        $categoryRepository = $em->getRepository($categoryClass);
 
         return $this->render('VlabsCmsBundle:Front\Category:index.html.twig', [
-            'categories' => $em
-                ->getRepository($this->getParameter('vlabs_cms.category_class'))
-                ->findAllFront(),
+            'categories' => $categoryRepository->findAll()
         ]);
     }
 }

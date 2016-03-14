@@ -63,6 +63,23 @@ trait CategoryTrait
     }
 
     /**
+     * Get publishedPosts
+     *
+     * @return array
+     */
+    public function getPublishedPosts()
+    {
+        $publishedPosts = [];
+        /** @var PostInterface $post */
+        foreach($this->posts as $post) {
+            if (is_null($post->getPublishedAt())) continue;
+            if($post->getPublishedAt() > new \DateTime()) continue;
+            $publishedPosts []= $post;
+        }
+        return $publishedPosts;
+    }
+
+    /**
      * Add child
      *
      * @param \Vlabs\CmsBundle\Entity\CategoryInterface $child

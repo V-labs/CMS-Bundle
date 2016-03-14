@@ -1,0 +1,27 @@
+{% spaceless %}
+
+{% for flashMessage in app.session.flashbag.get('success') %}
+    <div class="alert alert-success">
+        {{ flashMessage|trans({}, 'vlabs_cms') }}
+    </div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('info') %}
+    <div class="alert alert-info">
+        {{ flashMessage|trans({}, 'vlabs_cms') }}
+    </div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('warning') %}
+    <div class="alert alert-warning">
+        {{ flashMessage|trans({}, 'vlabs_cms') }}
+    </div>
+{% endfor %}
+
+{% for flashMessage in app.session.flashbag.get('danger') %}
+    <div class="alert alert-danger">
+        {{ flashMessage|trans({}, 'vlabs_cms') }}
+    </div>
+{% endfor %}
+
+{% endspaceless %}

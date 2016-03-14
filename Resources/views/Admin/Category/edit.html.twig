@@ -1,0 +1,11 @@
+{% extends "VlabsCmsBundle:Admin:base.html.twig" %}
+
+{% block content %}
+
+    {% include 'VlabsCmsBundle:Admin:back.html.twig' %}
+
+    <h3><i class="fa fa-fw fa-file-text-o"></i>{{ 'category_edition'|trans({}, 'vlabs_cms') }}</h3>
+
+    {{ form(form, {'attr': {'novalidate': 'novalidate'}}) }}
+
+{% endblock %}

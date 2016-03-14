@@ -1,8 +1,32 @@
-{% extends 'base.html.twig' %}
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <title>{% block title %}VlabsCmsBundle{% endblock %}</title>
+    {% block stylesheets %}
 
-{% block stylesheets %}
+        <link href="{{ asset('bundles/vlabscms/vendor/bootstrap/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet"/>
 
-    <link href="{{ asset('bundles/vlabscms/vendor/bootstrap/css/bootstrap.min.css') }}" type="text/css" rel="stylesheet"/>
-    <link href="{{ asset('bundles/vlabscms/vendor/bootstrap/css/bootstrap-theme.min.css') }}" type="text/css" rel="stylesheet"/>
+    {% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('bundles/vlabscms/favicon.ico') }}" />
+</head>
+<body>
+{% block body %}
+
+    <div class="container">
+
+        <div class="page-header">
+            <h1><img style="margin-right: 50px" src="{{ asset('bundles/vlabscms/img/logo.png') }}">VlabsCmsBundle</h1>
+        </div>
+
+        {% block flash '' %}
+
+        {% block content '' %}
+
+    </div>
 
 {% endblock %}
+{% block javascripts '' %}
+</body>
+</html>

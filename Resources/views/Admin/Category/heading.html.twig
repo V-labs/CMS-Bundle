@@ -1,0 +1,21 @@
+
+<div class="pull-right">
+    <i class="fa fa-fw fa-plus vlabs-cms-cursor-pointer" data-toggle="tooltip" data-placement="left" data-title="{{ 'new_sub_category'|trans({}, 'vlabs_cms') }}" data-placeholder="{{ 'category_name'|trans({}, 'vlabs_cms') }}" data-new="category" data-id="{{ category.id }}" ></i>
+    <a href="{{ path('vlabs_cms_admin_post_new', {categoryId: category.id}) }}" class="vlabs-cms-icon">
+        <i class="fa fa-fw fa-file-text-o" data-toggle="tooltip" data-placement="left" data-title="{{ 'new_post'|trans({}, 'vlabs_cms') }}"></i>
+    </a>
+    <a href="{{ path('vlabs_cms_admin_category_edit', {id: category.id}) }}" class="vlabs-cms-icon">
+        <i class="fa fa-fw fa-pencil" data-toggle="tooltip" data-placement="left" data-title="{{ 'edit'|trans({}, 'vlabs_cms') }}"></i>
+    </a>
+    {% if category.children|length == 0 and category.posts|length == 0 %}
+        <i class="fa fa-fw fa-trash vlabs-cms-cursor-pointer" data-toggle="tooltip" data-placement="left" data-title="{{ 'delete'|trans({}, 'vlabs_cms') }}" data-delete="category" data-id="{{ category.id }}" data-confirm="{{ 'confirm_delete'|trans({}, 'vlabs_cms') }}"></i>
+    {% endif %}
+</div>
+
+<span class="label label-success">{{ 'category'|trans({}, 'vlabs_cms') }}</span>
+
+<strong>{{ category.name }}</strong>
+
+{% if category.section %}
+    <sub>{{ category.section }}</sub>
+{% endif %}

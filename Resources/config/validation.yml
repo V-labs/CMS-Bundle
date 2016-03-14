@@ -1,0 +1,11 @@
+Vlabs\CmsBundle\Entity\Post:
+    properties:
+        title:
+            - NotBlank: ~
+        content:
+            - NotBlank: ~
+
+Vlabs\CmsBundle\Entity\Category:
+    properties:
+        name:
+            - NotBlank: ~

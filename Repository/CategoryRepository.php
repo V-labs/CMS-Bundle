@@ -12,26 +12,7 @@ use Vlabs\CmsBundle\Entity\CategoryInterface;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findAllFront()
-    {
-        $categories = $this->_em->createQueryBuilder()
-            ->select('c, p, c2')
-            ->from($this->_entityName, 'c')
-            ->join('c.posts', 'p')
-            ->leftJoin('c.children', 'c2')
-            ->where('p.publishedAt <= :now')
-            ->orderBy('c.position')
-            ->addOrderBy('c.name')
-            ->addOrderBy('c2.position')
-            ->addOrderBy('c2.name')
-            ->setParameter('now', new \DateTime())
-            ->getQuery()
-            ->getResult();
-
-        return $this->getRootCategories($categories);
-    }
-
-    public function findAllAdmin()
+    public function findAll()
     {
         $categories = $this->_em->createQueryBuilder()
             ->select('c, p, c2')
@@ -51,13 +32,11 @@ class CategoryRepository extends \Doctrine\ORM\EntityRepository
     private function getRootCategories(array $categories)
     {
         $rootCategories = [];
-
         /** @var CategoryInterface $category */
         foreach ($categories as $category) {
             if ($category->getParent()) continue;
             $rootCategories []= $category;
         }
-
         return $rootCategories;
     }
 }

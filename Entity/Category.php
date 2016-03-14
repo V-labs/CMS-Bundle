@@ -22,14 +22,14 @@ abstract class Category implements CategoryInterface
     private $name;
 
     /**
-     * @var integer
-     */
-    private $position;
-
-    /**
      * @var string
      */
     private $section;
+
+    /**
+     * @var integer
+     */
+    private $position;
 
     /**
      * Get id
@@ -72,7 +72,7 @@ abstract class Category implements CategoryInterface
      *
      * @return $this
      */
-    public function seSection($section)
+    public function setSection($section)
     {
         $this->section = $section;
 

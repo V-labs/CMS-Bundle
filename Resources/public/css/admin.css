@@ -1,0 +1,44 @@
+
+.vlabs-cms-cursor-pointer {
+    cursor: pointer;
+}
+
+.vlabs-cms-cursor-help {
+    cursor: help;
+}
+
+.vlabs-cms-icon {
+    color: inherit;
+}
+
+.vlabs-cms-icon:hover {
+    color: inherit;
+    text-decoration: none;
+}
+
+.vlabs-cms-categories {
+    margin-top: 20px;
+}
+
+.vlabs-cms-categories a[aria-expanded="true"] i {
+    -webkit-transform: rotate(90deg);
+    -ms-transform: rotate(90deg);
+    transform: rotate(90deg);
+}
+
+.vlabs-cms-categories ul {
+    padding: 4px;
+}
+
+.vlabs-cms-categories ul li {
+    position: relative;
+    display: block;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 8px;
+    margin-bottom: -1px;
+}
+
+.note-editable {
+    min-height: 300px;
+}

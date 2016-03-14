@@ -1,0 +1,21 @@
+<li data-item="category" id="{{ category.id }}">
+
+    {% include 'VlabsCmsBundle:Admin/Category:heading.html.twig' %}
+
+    {% if category.posts|length %}
+        <ul style="margin-left: 30px; margin-top: 10px" data-sort="post">
+            {% for post in category.posts %}
+                {% include 'VlabsCmsBundle:Admin/Post:show.html.twig' %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    {% if category.children|length %}
+        <ul style="margin-left: 30px; margin-top: 10px" data-sort="category">
+            {% for category in category.children %}
+                {% include 'VlabsCmsBundle:Admin/Category:show.html.twig' %}
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+</li>

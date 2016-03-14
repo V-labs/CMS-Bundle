@@ -1,4 +1,4 @@
 vlabs_cms_front_category_index:
     path: /
-    defaults: { _controller: VlabsCmsBundle:Front\Category:index }
+    defaults: { _controller: VlabsCmsBundle:Front/Category:index }
     methods:  [GET]

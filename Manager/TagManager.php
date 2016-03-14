@@ -9,10 +9,12 @@ use Symfony\Component\HttpFoundation\Request;
 class TagManager
 {
     private $em;
+    private $tagClass;
 
-    function __construct(EntityManager $em)
+    function __construct(EntityManager $em, $tagClass)
     {
         $this->em = $em;
+        $this->tagClass = $tagClass;
     }
 
     public function normalizeRequest(Request $request)
@@ -22,9 +24,10 @@ class TagManager
         }
         $tagIds = $request->request->get('tags');
         foreach ($tagIds as $i => $tagId) {
-            $tagRepository = $this->em->getRepository('VlabsCmsBundle:Tag');
+            $tagRepository = $this->em->getRepository($this->tagClass);
             if ($tagRepository->find($tagId)) continue;
-            $tag = new Tag();
+            /** @var TagInterface $tag */
+            $tag = new $this->tagClass();
             $tag->setName($tagId);
             $this->em->persist($tag);
             $this->em->flush();
