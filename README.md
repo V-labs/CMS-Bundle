@@ -98,7 +98,7 @@ fos_js_routing:
 </doctrine-mapping>
 ```
 ```php
-# src/AppBundle/Entity/Category.php
+// src/AppBundle/Entity/Category.php
 <?php
 
 namespace AppBundle\Entity;
@@ -126,7 +126,7 @@ class Category extends BaseCategory
 </doctrine-mapping>
 ```
 ```php
-# src/AppBundle/Entity/Post.php
+// src/AppBundle/Entity/Post.php
 <?php
 
 namespace AppBundle\Entity;
@@ -153,7 +153,7 @@ class Post extends BasePost
 
 ```
 ```php
-# src/AppBundle/Entity/Tag.php
+// src/AppBundle/Entity/Tag.php
 <?php
 
 namespace AppBundle\Entity;
