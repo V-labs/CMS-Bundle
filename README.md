@@ -33,6 +33,7 @@ public function registerBundles()
 ```yaml
 # app/config/config.yml
 // ...
+
 framework:
     translator: { fallbacks: ["%locale%"] }
     
