@@ -1,5 +1,5 @@
 
-// summernote: disable table resizing
+// summernote: disable table resizing on firefox
 if(navigator.userAgent.toLowerCase().indexOf('firefox') > -1) {
     document.designMode = 'on';
     document.execCommand('enableObjectResizing', false, 'false');
@@ -13,6 +13,8 @@ $(function () {
 
     $.fn.select2.defaults.set('language', locale);
 
+    bootbox.setDefaults({ locale: "fr" });
+
     $('[data-toggle="tooltip"]').tooltip();
 
     if (location.hash) {
@@ -24,26 +26,25 @@ $(function () {
     });
 
     $('[data-new="category"]').click(function () {
-        swal({
-            title: $(this).data('title'),
-            type: 'input',
-            closeOnConfirm: true,
-            animation: 'slide-from-top',
-            inputPlaceholder: $(this).data('placeholder')
-        }, (function (name) {
-            if (!name || name == $(this).data('name')) return;
-            $.ajax({
-                url: Routing.generate('vlabs_cms_admin_category_new'),
-                type: 'POST',
-                data: {
-                    name: name,
-                    parent: $(this).data('id')
-                },
-                success: function () {
-                    location.reload();
-                }
-            });
-        }).bind(this));
+        var $this = $(this);
+        bootbox.prompt({
+            title: $this.data('title'),
+            placeholder: $this.data('placeholder'),
+            callback: function(name) {
+                if (!name || name == $this.data('name')) return;
+                $.ajax({
+                    url: Routing.generate('vlabs_cms_admin_category_new'),
+                    type: 'POST',
+                    data: {
+                        name: name,
+                        parent: $this.data('id')
+                    },
+                    success: function () {
+                        location.reload();
+                    }
+                });
+            }
+        });
     });
 
     $('[data-delete="category"]').confirmation({

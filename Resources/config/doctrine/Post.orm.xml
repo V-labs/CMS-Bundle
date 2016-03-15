@@ -19,5 +19,8 @@
         <field name="position" type="integer" nullable="true"/>
         <field name="title" type="string" length="255"/>
         <field name="content" type="text"/>
+        <field name="slug" type="string" length="255" unique="true">
+            <gedmo:slug fields="title" />
+        </field>
     </mapped-superclass>
 </doctrine-mapping>

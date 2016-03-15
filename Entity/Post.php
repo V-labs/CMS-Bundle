@@ -42,6 +42,11 @@ abstract class Post implements PostInterface
     private $content;
 
     /**
+     * @var string
+     */
+    private $slug;
+
+    /**
      * Get id
      *
      * @return integer
@@ -169,5 +174,29 @@ abstract class Post implements PostInterface
     public function getContent()
     {
         return $this->content;
+    }
+
+    /**
+     * Set slug
+     *
+     * @param string $slug
+     *
+     * @return $this
+     */
+    public function setSlug($slug)
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
+
+    /**
+     * Get slug
+     *
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
     }
 }

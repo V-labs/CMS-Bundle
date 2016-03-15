@@ -28,18 +28,32 @@ public function registerBundles()
 ```
 
 
-### Step 3: Register the configuration
+### Step 3: Update the configuration
 
 ```yaml
 # app/config/config.yml
 // ...
 
 framework:
+    // ...
     translator: { fallbacks: ["%locale%"] }
     
+// ...
+
+doctrine:
+    // ...
+    orm:
+        filters:
+              softdeleteable:
+                class: Gedmo\SoftDeleteable\Filter\SoftDeleteableFilter
+                enabled: true
+    
+// ...
+
 stof_doctrine_extensions:
     orm:
         default:
+            sluggable: true
             softdeleteable: true
             timestampable: true
 

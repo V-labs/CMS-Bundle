@@ -6,14 +6,14 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 class PostController extends Controller
 {
-    public function showAction($id)
+    public function showAction($slug)
     {
         $em = $this->getDoctrine()->getManager();
 
         return $this->render('VlabsCmsBundle:Front\Post:show.html.twig', [
             'post' => $em
                 ->getRepository($this->getParameter('vlabs_cms.post_class'))
-                ->findFront($id),
+                ->findFront($slug),
         ]);
     }
 }

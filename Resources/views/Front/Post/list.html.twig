@@ -2,7 +2,7 @@
 {% if posts|length %}
     <ul>
         {% for post in posts %}
-            <li><a href="{{ path('vlabs_cms_front_post_show', {id: post.id}) }}">{{ post.title }}</a></li>
+            <li><a href="{{ path('vlabs_cms_front_post_show', {slug: post.slug}) }}">{{ post.title }}</a></li>
         {% endfor %}
     </ul>
 {% endif %}

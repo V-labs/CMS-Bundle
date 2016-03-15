@@ -10,14 +10,14 @@ namespace Vlabs\CmsBundle\Repository;
  */
 class PostRepository extends \Doctrine\ORM\EntityRepository
 {
-    public function findFront($id)
+    public function findFront($slug)
     {
         return $this->_em->createQueryBuilder()
             ->select('p')
             ->from($this->_entityName, 'p')
-            ->where('p.id = :id')
+            ->where('p.slug = :slug')
             ->andWhere('p.publishedAt <= :now')
-            ->setParameter('id', $id)
+            ->setParameter('slug', $slug)
             ->setParameter('now', new \DateTime())
             ->getQuery()
             ->getSingleResult();
