@@ -29,8 +29,7 @@ class PostController extends Controller implements TranslationContainerInterface
         $form = $this->createForm(new PostNewType($postClass, $tagClass), $post);
         $form->handleRequest($request);
         if($form->isValid()){
-            $em->persist($post);
-            $em->flush();
+            $this->get('vlabs_cms.manager.post')->save($post);
             $this->addFlash('success', 'post_created');
             return $this->redirect($this->getBackRoute($post));
         }
@@ -52,7 +51,7 @@ class PostController extends Controller implements TranslationContainerInterface
         $form = $this->createForm(new PostEditType($postClass, $tagClass), $post);
         $form->handleRequest($request);
         if($form->isValid()){
-            $this->getDoctrine()->getManager()->flush();
+            $this->get('vlabs_cms.manager.post')->save($post);
             $this->addFlash('success', 'post_edited');
             return $this->redirect($this->getBackRoute($post));
         }
@@ -64,48 +63,21 @@ class PostController extends Controller implements TranslationContainerInterface
 
     public function publishAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $postClass = $this->getParameter('vlabs_cms.post_class');
-        $postRepository = $em->getRepository($postClass);
-        /** @var PostInterface $post */
-        $post = $postRepository->find($id);
-        if ($post->getPublishedAt()) {
-            $post->setPublishedAt(null);
-            $post->setUnpublishedAt(new \DateTime());
-        } else {
-            $post->setPublishedAt(new \DateTime());
-            $post->setUnpublishedAt(null);
-        }
-        $em->flush();
+        $this->get('vlabs_cms.manager.post')->togglePublish($id);
         return new Response();
     }
 
     public function deleteAction($id)
     {
-        $em = $this->getDoctrine()->getManager();
-        $postClass = $this->getParameter('vlabs_cms.post_class');
-        $postRepository = $em->getRepository($postClass);
-        /** @var PostInterface $post */
-        $post = $postRepository->find($id);
-        $em->remove($post);
-        $em->flush();
+        $this->get('vlabs_cms.manager.post')->delete($id);
         $this->addFlash('success', 'post_deleted');
         return new Response();
     }
 
     public function sortAction(Request $request)
     {
-        $em = $this->getDoctrine()->getManager();
-        $postClass = $this->getParameter('vlabs_cms.post_class');
-        $postRepository = $em->getRepository($postClass);
-        $i = 1;
         $ids = explode(',', array_keys($request->request->all())[0]);
-        foreach($ids as $id) {
-            /** @var PostInterface $post */
-            $post = $postRepository->find($id);
-            $post->setPosition($i++);
-        }
-        $em->flush();
+        $this->get('vlabs_cms.manager.post')->sort($ids);
         return new Response();
     }
 

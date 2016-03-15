@@ -32,9 +32,7 @@ class CategoryController extends Controller implements TranslationContainerInter
         $form = $this->createForm(new CategoryNewType($categoryClass, $postClass), $category);
         $form->handleRequest($request);
         if($form->isValid()){
-            $em = $this->getDoctrine()->getManager();
-            $em->persist($category);
-            $em->flush();
+            $this->get('vlabs_cms.manager.category')->save($category);
         }
         return new Response();
     }
@@ -50,8 +48,7 @@ class CategoryController extends Controller implements TranslationContainerInter
         $form = $this->createForm(new CategoryEditType($categoryClass, $postClass), $category);
         $form->handleRequest($request);
         if($form->isValid()){
-            $em = $this->getDoctrine()->getManager();
-            $em->flush();
+            $this->get('vlabs_cms.manager.category')->save($category);
             $this->addFlash('success', 'category_edited');
             return $this->redirect($this->getBackRoute($category));
         }
@@ -63,29 +60,14 @@ class CategoryController extends Controller implements TranslationContainerInter
 
     public function deleteAction($id)
     {
-        $categoryClass = $this->getParameter('vlabs_cms.category_class');
-        $em = $this->getDoctrine()->getManager();
-        $categoryRepository = $em->getRepository($categoryClass);
-        /** @var CategoryInterface $category */
-        $category = $categoryRepository->find($id);
-        $em = $this->getDoctrine()->getManager();
-        $em->remove($category);
-        $em->flush();
+        $this->get('vlabs_cms.manager.category')->delete($id);
         return new Response();
     }
 
     public function sortAction(Request $request)
     {
-        $categoryClass = $this->getParameter('vlabs_cms.category_class');
-        $em = $this->getDoctrine()->getManager();
-        $categoryRepository = $em->getRepository($categoryClass);
-        $i = 1;
         $ids = explode(',', array_keys($request->request->all())[0]);
-        foreach($ids as $id) {
-            $category = $categoryRepository->find($id);
-            $category->setPosition($i++);
-        }
-        $em->flush();
+        $this->get('vlabs_cms.manager.category')->sort($ids);
         return new Response();
     }
 
