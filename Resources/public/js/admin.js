@@ -40,6 +40,9 @@ $(function () {
                         parent: $this.data('id')
                     },
                     success: function () {
+                        if ($this.data('id')) {
+                            location.hash = 'category-' + $this.data('id');
+                        }
                         location.reload();
                     }
                 });

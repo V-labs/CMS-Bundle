@@ -5,7 +5,7 @@
             <i class="fa fa-fw fa-globe text-success vlabs-cms-cursor-pointer" data-toggle="tooltip" data-placement="left" data-title="{{ 'post_published_at_%date%_%hour%'|trans({'%date%': post.publishedAt|localizeddate('short', 'none'), '%hour%': post.publishedAt|localizeddate('none', 'short')}, 'vlabs_cms') }}" data-publish="post" data-id="{{ post.id }}" data-confirm="Dépublier"></i>
         {% else %}
             {% if post.unpublishedAt %}
-                <i class="fa fa-fw fa-globe text-danger vlabs-cms-cursor-pointer" data-toggle="tooltip" data-placement="left" data-title="{{ 'post_unpublished_at_%date%_%hour%'|trans({'%date%': post.publishedAt|localizeddate('short', 'none'), '%hour%': post.publishedAt|localizeddate('none', 'short')}, 'vlabs_cms') }}" data-publish="post" data-id="{{ post.id }}" data-confirm="Republier"></i>
+                <i class="fa fa-fw fa-globe text-danger vlabs-cms-cursor-pointer" data-toggle="tooltip" data-placement="left" data-title="{{ 'post_unpublished_at_%date%_%hour%'|trans({'%date%': post.unpublishedAt|localizeddate('short', 'none'), '%hour%': post.unpublishedAt|localizeddate('none', 'short')}, 'vlabs_cms') }}" data-publish="post" data-id="{{ post.id }}" data-confirm="Republier"></i>
             {% else %}
                 <i class="fa fa-fw fa-globe text-danger vlabs-cms-cursor-pointer" data-toggle="tooltip" data-placement="left" data-title="{{ 'post_unpublished'|trans({}, 'vlabs_cms') }}" data-publish="post" data-id="{{ post.id }}" data-confirm="{{ 'publish'|trans({}, 'vlabs_cms') }}"></i>
             {% endif %}

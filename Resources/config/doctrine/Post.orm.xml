@@ -16,9 +16,10 @@
         <field name="deletedAt" type="datetime" nullable="true" />
         <gedmo:soft-deleteable field-name="deletedAt" time-aware="false" />
         <field name="publishedAt" type="datetime" nullable="true"/>
+        <field name="unpublishedAt" type="datetime" nullable="true"/>
         <field name="position" type="integer" nullable="true"/>
         <field name="title" type="string" length="255"/>
-        <field name="content" type="text"/>
+        <field name="content" type="text" nullable="true"/>
         <field name="slug" type="string" length="255" unique="true">
             <gedmo:slug fields="title" />
         </field>

@@ -42,3 +42,7 @@
 .note-editable {
     min-height: 300px;
 }
+
+.tooltip {
+    z-index: 1020;
+}
