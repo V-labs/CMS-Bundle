@@ -55,13 +55,16 @@ class BlockFactory
 
         switch($slug){
             case 'style':
-                $parameters['class'] = $parameterBag->get('class');
                 $parameters['color'] = $parameterBag->get('color');
                 $parameters['text'] = $parameterBag->get('text');
                 break;
             case 'link':
                 $id = $parameterBag->get('id');
                 $parameters['post'] = $this->em->getRepository($this->postClass)->find($id);
+                break;
+            case 'url':
+                $parameters['url'] = $parameterBag->get('url');
+                $parameters['text'] = $parameterBag->get('text');
                 break;
             case 'picture':
                 $id = $parameterBag->get('id');
