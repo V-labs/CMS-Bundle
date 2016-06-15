@@ -1,0 +1,29 @@
+<div class="modal" data-modal="picture">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close">
+                    <i class="fa fa-close"></i>
+                </button>
+                <h4 class="modal-title">Insertion d'une image</h4>
+            </div>
+            <div class="modal-body">
+                <select style="width: 100%">
+                    <option></option>
+                    {% for picture in pictures %}
+                        <option value="{{ picture.id }}" data-src="{{ vlabs_media(picture) }}">{{ picture.fileName }}</option>
+                    {% endfor %}
+                </select>
+                <div class="text-center">
+                    <span>ou</span>
+                    <br>
+                    <span class="btn btn-success fileinput-button">
+                        <i class="fa fa-plus"></i>
+                        <span>Ajouter une nouvelle image</span>
+                        <input name="mediaFile[file]" type="file">
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -25,6 +25,8 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('category_class')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('post_class')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('tag_class')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('media_class')->cannotBeEmpty()->end()
+                ->arrayNode('colors')->prototype('scalar')->end()
             ->end()
         ;
 

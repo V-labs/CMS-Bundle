@@ -5,3 +5,7 @@ vlabs_cms_admin_category:
 vlabs_cms_admin_post:
     resource: "@VlabsCmsBundle/Resources/config/routing/admin/post.yml"
     prefix: /post
+
+vlabs_cms_admin_summernote:
+    resource: "@VlabsCmsBundle/Resources/config/routing/admin/summernote.yml"
+    prefix: /summernote

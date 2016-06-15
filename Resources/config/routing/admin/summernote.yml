@@ -1,0 +1,21 @@
+
+vlabs_cms_admin_summernote_modal:
+    path:     /modal/{slug}
+    defaults: { _controller: "VlabsCmsBundle:Admin/Summernote:modal" }
+    methods:  GET
+    options:
+        expose: true
+
+vlabs_cms_admin_summernote_block:
+    path:     /block/{slug}
+    defaults: { _controller: "VlabsCmsBundle:Admin/Summernote:block" }
+    methods:  GET
+    options:
+        expose: true
+
+vlabs_cms_admin_summernote_media:
+    path:     /media
+    defaults: { _controller: "VlabsCmsBundle:Admin/Summernote:media" }
+    methods:  POST
+    options:
+        expose: true

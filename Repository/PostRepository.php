@@ -22,4 +22,13 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
             ->getQuery()
             ->getSingleResult();
     }
+
+    public function findLinks()
+    {
+        return $this->_em->createQueryBuilder()
+            ->select('p')
+            ->from($this->_entityName, 'p')
+            ->orderBy('p.title')
+            ->getQuery()->getResult();
+    }
 }

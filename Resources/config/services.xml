@@ -5,6 +5,21 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
+        <service id="vlabs_cms.factory.block" class="Vlabs\CmsBundle\Factory\BlockFactory">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument>%vlabs_cms.category_class%</argument>
+            <argument>%vlabs_cms.post_class%</argument>
+            <argument>%vlabs_cms.tag_class%</argument>
+            <argument>%vlabs_cms.media_class%</argument>
+        </service>
+        <service id="vlabs_cms.factory.modal" class="Vlabs\CmsBundle\Factory\ModalFactory">
+            <argument type="service" id="doctrine.orm.entity_manager"/>
+            <argument>%vlabs_cms.category_class%</argument>
+            <argument>%vlabs_cms.post_class%</argument>
+            <argument>%vlabs_cms.tag_class%</argument>
+            <argument>%vlabs_cms.media_class%</argument>
+            <argument>%vlabs_cms.colors%</argument>
+        </service>
         <service id="vlabs_cms.manager.category" class="Vlabs\CmsBundle\Manager\CategoryManager">
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument>%vlabs_cms.category_class%</argument>
@@ -22,7 +37,7 @@
             <tag name="form.type" alias="category_tree"/>
         </service>
         <service id="vlabs_cms.form.type.category_parent_tree" class="Vlabs\CmsBundle\Form\CategoryParentTreeType">
-            <argument type="service" id="translator.default"></argument>
+            <argument type="service" id="translator.default"/>
             <argument>%vlabs_cms.category_class%</argument>
             <tag name="form.type" alias="category_parent_tree"/>
         </service>
