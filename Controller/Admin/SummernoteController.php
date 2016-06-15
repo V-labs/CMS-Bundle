@@ -2,7 +2,6 @@
 
 namespace Vlabs\CmsBundle\Controller\Admin;
 
-use AppBundle\Entity\Media;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -24,7 +23,9 @@ class SummernoteController extends Controller
 
     public function mediaAction(Request $request)
     {
-        $media = new Media();
+        $mediaClass = $this->getParameter('vlabs_cms.media_class');
+
+        $media = new $mediaClass();
 
         $form = $this->createForm(new MediaType(get_class($media)), $media);
         $form->add('upload', 'submit');
