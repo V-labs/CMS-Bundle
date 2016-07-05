@@ -66,6 +66,10 @@ class BlockFactory
                 $parameters['url'] = $parameterBag->get('url');
                 $parameters['text'] = $parameterBag->get('text');
                 break;
+            case 'mailto':
+                $parameters['email'] = $parameterBag->get('email');
+                $parameters['text'] = $parameterBag->get('text');
+                break;
             case 'picture':
                 $id = $parameterBag->get('id');
                 $parameters['picture'] = $this->em->getRepository($this->mediaClass)->find($id);

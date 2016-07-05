@@ -10,7 +10,7 @@
     <div class="vlabs-cms-categories" data-sort="category">
         {% for category in categories %}
             <div class="panel" id="{{ category.id }}">
-                <div class="panel-heading" id="category-heading-{{ category.id }}" style="padding-bottom: 0px">
+                <div class="panel-heading" id="category-heading-{{ category.id }}">
                     {% if category.posts|length or category.children|length %}
                         <a data-toggle="collapse" data-parent=".vlabs-cms-categories" href="#category-{{ category.id }}"  class="vlabs-cms-icon">
                             <i class="fa fa-fw fa-caret-right"></i>
@@ -22,7 +22,6 @@
                 </div>
                 {% if category.posts|length or category.children|length %}
                     <div class="collapse" id="category-{{ category.id }}" aria-labelledby="category-heading-{{ category.id }}">
-                        <hr>
                         {% if category.posts|length %}
                             <ul data-sort="post">
                                 {% for post in category.posts %}
