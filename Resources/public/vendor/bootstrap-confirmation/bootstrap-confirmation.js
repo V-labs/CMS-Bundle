@@ -164,7 +164,7 @@
     Confirmation.prototype.getBtnOkLabel = function () {
         var $e = this.$element;
 
-        return $e.attr('data-confirm');
+        return $e.attr('data-btnOkLabel');
     }
 
     Confirmation.prototype.getBtnOkIcon = function () {

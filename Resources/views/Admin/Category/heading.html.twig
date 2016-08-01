@@ -8,7 +8,7 @@
         <i class="fa fa-fw fa-pencil" data-toggle="tooltip" data-placement="left" data-title="{{ 'edit'|trans({}, 'vlabs_cms') }}"></i>
     </a>
     {% if category.children|length == 0 and category.posts|length == 0 %}
-        <i class="fa fa-fw fa-trash vlabs-cms-cursor-pointer" data-toggle="tooltip" data-placement="left" data-title="{{ 'delete'|trans({}, 'vlabs_cms') }}" data-delete="category" data-id="{{ category.id }}" data-confirm-title="{{ 'confirm_delete'|trans({}, 'vlabs_cms') }}"></i>
+        <i class="fa fa-fw fa-trash vlabs-cms-cursor-pointer" data-toggle="tooltip" data-placement="left" data-title="{{ 'delete'|trans({}, 'vlabs_cms') }}" data-delete="category" data-id="{{ category.id }}" data-btnOkLabel="{{ 'confirm_delete'|trans({}, 'vlabs_cms') }}"></i>
     {% endif %}
 </div>
 
