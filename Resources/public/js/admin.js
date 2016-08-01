@@ -51,6 +51,7 @@ $(function () {
     });
 
     $('[data-delete="category"]').confirmation({
+        title: $(this).data('confirm-title'),
         onConfirm: function (event, element) {
             $.ajax({
                 url: Routing.generate('vlabs_cms_admin_category_delete', {
@@ -205,6 +206,7 @@ $(function () {
     });
 
     $('[data-publish="post"]').confirmation({
+        title: $(this).data('confirm-title'),
         onConfirm: function (event, element) {
             $.ajax({
                 url: Routing.generate('vlabs_cms_admin_post_publish', {
@@ -219,6 +221,7 @@ $(function () {
     });
 
     $('[data-delete="post"]').confirmation({
+        title: $(this).data('confirm-title'),
         onConfirm: function (event, element) {
             $.ajax({
                 url: Routing.generate('vlabs_cms_admin_post_delete', {
