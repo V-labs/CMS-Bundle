@@ -78,6 +78,10 @@ class BlockFactory
                 $id = $parameterBag->get('id');
                 $parameters['pdf'] = $this->em->getRepository($this->mediaClass)->find($id);
                 break;
+            case 'word':
+                $id = $parameterBag->get('id');
+                $parameters['word'] = $this->em->getRepository($this->mediaClass)->find($id);
+                break;
         }
 
         return $parameters;

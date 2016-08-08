@@ -71,6 +71,12 @@ class ModalFactory
             case 'style':
                 $parameters['colors'] = $this->colors;
                 break;
+            case 'word':
+                $parameters['words'] = $this->em->getRepository($this->mediaClass)->findByMimeTypes([
+                    'application/msword',
+                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
+                ]);
+                break;
         }
         return $parameters;
     }
