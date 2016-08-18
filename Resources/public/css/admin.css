@@ -43,6 +43,22 @@
     min-height: 300px;
 }
 
+.note-editable img[style*="float: left"] {
+    margin-right: 10px;
+}
+
+.note-editable img[style*="float: right"] {
+    margin-left: 10px;
+}
+
+.note-editable p{
+    border: 1px dotted black;
+}
+
+.note-editable img{
+    max-width: none;
+}
+
 .tooltip {
     z-index: 1020;
 }
