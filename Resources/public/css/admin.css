@@ -56,7 +56,7 @@
 }
 
 .note-editable img{
-    max-width: none;
+    max-width: none !important;
 }
 
 .tooltip {
