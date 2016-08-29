@@ -3,6 +3,7 @@
 namespace Vlabs\CmsBundle\Factory;
 
 use Doctrine\ORM\EntityManager;
+use Symfony\Component\HttpFoundation\ParameterBag;
 
 class ModalFactory
 {
@@ -54,7 +55,7 @@ class ModalFactory
         $this->colors = $colors;
     }
 
-    function getParameters($slug)
+    function getParameters($slug, ParameterBag $parameterBag)
     {
         $parameters = [];
 
@@ -70,6 +71,7 @@ class ModalFactory
                 break;
             case 'style':
                 $parameters['colors'] = $this->colors;
+                $parameters['class'] = $parameterBag->get('class');
                 break;
             case 'word':
                 $parameters['words'] = $this->em->getRepository($this->mediaClass)->findByMimeTypes([
