@@ -57,6 +57,7 @@ class BlockFactory
             case 'style':
                 $parameters['color'] = $parameterBag->get('color');
                 $parameters['text'] = $parameterBag->get('text');
+                $parameters['class'] = $parameterBag->get('class');
                 break;
             case 'link':
                 $id = $parameterBag->get('id');
