@@ -65,17 +65,11 @@ class ModalFactory
             case 'picture':
                 $parameters['pictures'] = $this->em->getRepository($this->mediaClass)->findByMimeType('image/%');
                 break;
-            case 'pdf':
-                $parameters['pdfs'] = $this->em->getRepository($this->mediaClass)->findByMimeType('application/pdf');
+            case 'file':
+                $parameters['files'] = $this->em->getRepository($this->mediaClass)->findByMimeType('application/%');
                 break;
             case 'style':
                 $parameters['colors'] = $this->colors;
-                break;
-            case 'word':
-                $parameters['words'] = $this->em->getRepository($this->mediaClass)->findByMimeTypes([
-                    'application/msword',
-                    'application/vnd.openxmlformats-officedocument.wordprocessingml.document'
-                ]);
                 break;
         }
         return $parameters;

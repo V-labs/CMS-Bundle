@@ -87,7 +87,7 @@ $(function () {
             ['history', ['undo', 'redo']],
             ['misc', ['fullscreen', 'codeview']],
             ['layout', ['ul', 'ol', 'paragraph']],
-            ['vlabs', ['vlabs-mailto', 'vlabs-url', 'vlabs-style', 'vlabs-link', 'vlabs-pdf', 'vlabs-word', 'vlabs-picture', 'vlabs-template', 'vlabs-video']]
+            ['vlabs', ['vlabs-mailto', 'vlabs-url', 'vlabs-style', 'vlabs-link', 'vlabs-file', 'vlabs-picture', 'vlabs-template', 'vlabs-video']]
         ],
         popover: {
             image: [
