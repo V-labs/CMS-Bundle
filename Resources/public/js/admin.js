@@ -119,7 +119,7 @@ $(function () {
                     actions.push('Supprimer le bloc');
                 }
 
-                var $block = $(range.nodes()[0]).closest('.block');
+                var $block = $(range.nodes()[0]).closest('.block,div[align]');
                 if ($block.length > 0) {
                     actions.push('Ajouter un bloc au dessus');
                     actions.push('Ajouter un bloc en dessous');
@@ -145,7 +145,7 @@ $(function () {
                     }
                 }
                 if (item == 'Ajouter un bloc au dessus') {
-                    var $block = $(range.nodes()[0]).closest('.block');
+                    var $block = $(range.nodes()[0]).closest('.block,div[align]');
                     if ($block.length > 0) {
                         $('<p><br></p>').insertBefore($block);
                     } else {
@@ -156,7 +156,7 @@ $(function () {
                     }
                 }
                 if (item == 'Ajouter un bloc en dessous') {
-                    var $block = $(range.nodes()[0]).closest('.block');
+                    var $block = $(range.nodes()[0]).closest('.block,div[align]');
                     if ($block.length > 0) {
                         $('<p><br></p>').insertAfter($block);
                     } else {
