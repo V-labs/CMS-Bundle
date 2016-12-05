@@ -31,7 +31,10 @@
 
                                 var text = range.toString();
 
-                                $('[data-modal="url"]').fadeIn();
+                                $('[data-modal="url"]').fadeIn(function(){
+                                    $('[type=text]', this).select();
+                                });
+
                                 $('.close', '[data-modal="url"]').click(function(){
                                     $('[data-modal="url"]').remove();
                                 });
