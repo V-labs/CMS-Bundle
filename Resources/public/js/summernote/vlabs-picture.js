@@ -49,9 +49,6 @@
                                         success: function (html) {
                                             $('[data-editor="postContent"]').data('range').pasteHTML(html);
                                             $('[data-editor="postContent"]').val($('[data-editor="postContent"]').summernote('code'));
-
-                                            $('[data-editor="postContent"]').summernote('undo');
-                                            $('[data-editor="postContent"]').summernote('redo');
                                             $modal.fadeOut();
                                         }
                                     });
@@ -72,8 +69,6 @@
                                             success: function (html) {
                                                 $('[data-editor="postContent"]').data('range').pasteHTML(html);
                                                 $('[data-editor="postContent"]').val($('[data-editor="postContent"]').summernote('code'));
-                                                $('[data-editor="postContent"]').summernote('undo');
-                                                $('[data-editor="postContent"]').summernote('redo');
                                                 $modal.fadeOut();
                                             }
                                         });

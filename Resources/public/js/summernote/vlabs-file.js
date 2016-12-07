@@ -46,8 +46,6 @@
                                             $('[data-editor="postContent"]').data('range').pasteHTML(html);
                                             $('[data-editor="postContent"]').val($('[data-editor="postContent"]').summernote('code'));
                                             $('[data-modal="file"]').remove();
-                                            $('[data-editor="postContent"]').summernote('undo');
-                                            $('[data-editor="postContent"]').summernote('redo');
                                         }
                                     });
                                 });
@@ -67,8 +65,6 @@
                                                 $('[data-editor="postContent"]').data('range').pasteHTML(html);
                                                 $('[data-editor="postContent"]').val($('[data-editor="postContent"]').summernote('code'));
                                                 $('[data-modal="file"]').remove();
-                                                $('[data-editor="postContent"]').summernote('undo');
-                                                $('[data-editor="postContent"]').summernote('redo');
                                             }
                                         });
                                     }

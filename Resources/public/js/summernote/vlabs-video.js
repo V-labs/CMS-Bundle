@@ -44,8 +44,6 @@
                                     $('[data-editor="postContent"]').data('range').pasteHTML($block, true);
                                     $('[data-editor="postContent"]').val($('[data-editor="postContent"]').summernote('code'));
                                     $('[data-modal="video"]').remove();
-                                    $('[data-editor="postContent"]').summernote('undo');
-                                    $('[data-editor="postContent"]').summernote('redo');
                                 });
                             }
                         });

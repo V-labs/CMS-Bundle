@@ -53,8 +53,6 @@
                                             $('[data-editor="postContent"]').data('range').pasteHTML(html);
                                             $('[data-editor="postContent"]').val($('[data-editor="postContent"]').summernote('code'));
                                             $('[data-modal="email"]').remove();
-                                            $('[data-editor="postContent"]').summernote('undo');
-                                            $('[data-editor="postContent"]').summernote('redo');
                                         }
                                     });
                                 });

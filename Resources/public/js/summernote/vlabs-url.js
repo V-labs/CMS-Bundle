@@ -19,7 +19,7 @@
                     click: function () {
 
                         var range = $('[data-editor="postContent"]').summernote('createRange');
-                        if (range.toString() == '')  return;
+                        if (range.toString() == '') return;
                         $('[data-editor="postContent"]').data('range', range);
                         $.ajax({
                             url: Routing.generate('vlabs_cms_admin_summernote_modal', {
@@ -32,7 +32,7 @@
                                 var text = range.toString();
 
                                 $('[data-modal="url"]').fadeIn(function(){
-                                    $('[type=text]', this).select();
+                                    $('input', this).select();
                                 });
 
                                 $('.close', '[data-modal="url"]').click(function(){
@@ -43,7 +43,10 @@
 
                                     var url = $('input', '[data-modal="url"]').val();
 
-                                    if (!url) return;
+                                    if (!url) {
+                                        $('input', '[data-modal="url"]').select();
+                                        return;
+                                    }
 
                                     $.ajax({
                                         url: Routing.generate('vlabs_cms_admin_summernote_block', {
@@ -56,8 +59,6 @@
                                             $('[data-editor="postContent"]').data('range').pasteHTML(html);
                                             $('[data-editor="postContent"]').val($('[data-editor="postContent"]').summernote('code'));
                                             $('[data-modal="url"]').remove();
-                                            $('[data-editor="postContent"]').summernote('undo');
-                                            $('[data-editor="postContent"]').summernote('redo');
                                         }
                                     });
                                 });

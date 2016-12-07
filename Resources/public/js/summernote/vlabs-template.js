@@ -67,8 +67,6 @@
                                                 $('[data-editor="postContent"]').data('range').pasteHTML(html, true);
                                                 $('[data-editor="postContent"]').val($('[data-editor="postContent"]').summernote('code'));
                                                 $('[data-modal="template"]').remove();
-                                                $('[data-editor="postContent"]').summernote('undo');
-                                                $('[data-editor="postContent"]').summernote('redo');
                                             }
                                         });
                                     }

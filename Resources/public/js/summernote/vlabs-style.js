@@ -68,8 +68,6 @@
                                     range.pasteHTML(render);
                                     $('[data-editor="postContent"]').val($('[data-editor="postContent"]').summernote('code'));
                                     $('[data-modal="style"]').remove();
-                                    $('[data-editor="postContent"]').summernote('undo');
-                                    $('[data-editor="postContent"]').summernote('redo');
                                 });
 
                                 callback();
