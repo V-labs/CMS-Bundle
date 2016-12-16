@@ -8,36 +8,53 @@
                 <h4 class="modal-title">Aide</h4>
             </div>
             <div class="modal-body">
-                <p>La touche <kbd>&nbsp;:&nbsp;</kbd> permet d'afficher un menu différent selon la zone dans laquelle le curseur se situe. Chaque élement du menu permet d'opérer les actions correspondantes.</p>
-                <dl>
-                    <dt>Bloc</dt>
-                    <dd>
-                        <em>Un bloc se présente visuellement sous la forme d'une zone éditable entourée de pointillés.</em>
-                        <ul>
-                            <li>Supprimer le bloc</li>
-                        </ul>
-                    </dd>
-                    <dt>Liste</dt>
-                    <dd>
-                        <ul>
-                            <li>Ajouter un bloc au dessus</li>
-                            <li>Ajouter un bloc en dessous</li>
-                        </ul>
-                    </dd>
-                    <dt>Entête de tableau</dt>
-                    <dd>
-                        <ul>
-                            <li>Supprimer l'entête</li>
-                        </ul>
-                    </dd>
-                    <dt>Ligne de tableau</dt>
-                    <dd>
-                        <ul>
-                            <li>Ajouter une ligne</li>
-                            <li>Supprimer cette ligne</li>
-                        </ul>
-                    </dd>
-                </dl>
+                <ul class="nav nav-pills">
+                    <li class="active"><a data-toggle="pill" href="#help-1">Saut de ligne</a></li>
+                    <li><a data-toggle="pill" href="#help-2">Menu spécial</a></li>
+                </ul>
+
+                <div class="tab-content">
+                    <div id="help-1" class="tab-pane fade in active">
+                        <dl class="dl-horizontal">
+                            <dt><kbd>&nbsp;ENTRÉE&nbsp;</kbd></dt>
+                            <dd>Cette touche permet simplement d'ajouter un bloc en dessous.</dd>
+                            <dt><kbd>&nbsp;MAJ&nbsp;</kbd>&nbsp;+&nbsp;<kbd>&nbsp;ENTRÉE&nbsp;</kbd></dt>
+                            <dd>Cette combinaison de touche permet de faire des sauts de ligne au sein d'un bloc.</dd>
+                        </dl>
+                    </div>
+                    <div id="help-2" class="tab-pane fade">
+                        <p>La touche <kbd>&nbsp;:&nbsp;</kbd> permet d'afficher un menu différent selon la zone dans laquelle le curseur se situe. Chaque élement du menu permet d'opérer les actions correspondantes.</p>
+                        <dl>
+                            <dt>Bloc</dt>
+                            <dd>
+                                <em>Un bloc se présente visuellement sous la forme d'une zone éditable entourée de pointillés.</em>
+                                <ul>
+                                    <li>Supprimer le bloc</li>
+                                </ul>
+                            </dd>
+                            <dt>Liste</dt>
+                            <dd>
+                                <ul>
+                                    <li>Ajouter un bloc au dessus</li>
+                                    <li>Ajouter un bloc en dessous</li>
+                                </ul>
+                            </dd>
+                            <dt>Entête de tableau</dt>
+                            <dd>
+                                <ul>
+                                    <li>Supprimer l'entête</li>
+                                </ul>
+                            </dd>
+                            <dt>Ligne de tableau</dt>
+                            <dd>
+                                <ul>
+                                    <li>Ajouter une ligne</li>
+                                    <li>Supprimer cette ligne</li>
+                                </ul>
+                            </dd>
+                        </dl>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
