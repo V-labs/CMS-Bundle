@@ -2,6 +2,7 @@
 
 namespace Vlabs\CmsBundle\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,7 +17,7 @@ class PostNewType extends PostType
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('submit', 'submit', [
+            ->add('submit', SubmitType::class, [
                 'label' => 'submit',
                 'attr' => [ 'class' => 'btn-primary' ]
             ]);

@@ -27,7 +27,7 @@ class SummernoteController extends Controller
 
         $media = new $mediaClass();
 
-        $form = $this->createForm(new MediaType(get_class($media)), $media);
+        $form = $this->createForm(MediaType::class, $media);
 
         $form->handleRequest($request);
 

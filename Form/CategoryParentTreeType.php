@@ -4,11 +4,12 @@ namespace Vlabs\CmsBundle\Form;
 
 use JMS\TranslationBundle\Model\Message;
 use JMS\TranslationBundle\Translation\TranslationContainerInterface;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\ChoiceList\View\ChoiceView;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
-use Symfony\Component\OptionsResolver\OptionsResolverInterface;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Translation\Translator;
 use Vlabs\CmsBundle\Entity\Category;
 use Vlabs\CmsBundle\Repository\CategoryRepository;
@@ -94,22 +95,22 @@ class CategoryParentTreeType extends AbstractType implements TranslationContaine
         return $result;
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'class' => $this->categoryClass,
-            'property' => 'name',
             'query_builder' => function (CategoryRepository $r) {
                 return $r->createQueryBuilder('c')
                     ->orderBy('c.position');
             },
-            'translation_domain' => 'vlabs_cms'
+            'translation_domain' => 'vlabs_cms',
+            'choice_label' => 'name'
         ]);
     }
 
     public function getParent()
     {
-        return 'entity';
+        return EntityType::class;
     }
 
     public function getName()

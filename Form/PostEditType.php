@@ -3,6 +3,7 @@
 namespace Vlabs\CmsBundle\Form;
 
 use Doctrine\ORM\EntityRepository;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,11 +18,11 @@ class PostEditType extends PostType
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('category', 'category_tree', [
+            ->add('category', CategoryTreeType::class, [
                 'label' => 'post_category',
                 'attr' => ['data-select' => 'postCategory']
             ])
-            ->add('submit', 'submit', [
+            ->add('submit', SubmitType::class, [
                 'label' => 'submit',
                 'attr' => [ 'class' => 'btn-primary' ]
             ]);

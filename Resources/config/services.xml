@@ -32,6 +32,9 @@
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument>%vlabs_cms.tag_class%</argument>
         </service>
+
+
+        <!-- Forms -->
         <service id="vlabs_cms.form.type.category_tree" class="Vlabs\CmsBundle\Form\CategoryTreeType">
             <argument>%vlabs_cms.category_class%</argument>
             <tag name="form.type" alias="category_tree"/>
@@ -41,6 +44,32 @@
             <argument>%vlabs_cms.category_class%</argument>
             <tag name="form.type" alias="category_parent_tree"/>
         </service>
+        <service id="vlabs_cms.form.type.category_edit" class="Vlabs\CmsBundle\Form\CategoryEditType">
+            <argument>%vlabs_cms.category_class%</argument>
+            <argument>%vlabs_cms.post_class%</argument>
+            <tag name="form.type" alias="category_edit"/>
+        </service>
+        <service id="vlabs_cms.form.type.category_new" class="Vlabs\CmsBundle\Form\CategoryNewType">
+            <argument>%vlabs_cms.category_class%</argument>
+            <argument>%vlabs_cms.post_class%</argument>
+            <tag name="form.type" alias="category_new"/>
+        </service>
+        <service id="vlabs_cms.form.type.post_edit" class="Vlabs\CmsBundle\Form\PostEditType">
+            <argument>%vlabs_cms.post_class%</argument>
+            <argument>%vlabs_cms.tag_class%</argument>
+            <tag name="form.type" alias="post_edit"/>
+        </service>
+        <service id="vlabs_cms.form.type.post_new" class="Vlabs\CmsBundle\Form\PostNewType">
+            <argument>%vlabs_cms.post_class%</argument>
+            <argument>%vlabs_cms.tag_class%</argument>
+            <tag name="form.type" alias="post_new"/>
+        </service>
+        <service id="vlabs_cms.form.type.cms_media" class="Vlabs\MediaBundle\Form\MediaType">
+            <argument>%vlabs_cms.media_class%</argument>
+            <tag name="form.type" alias="post_new"/>
+        </service>
+        <!-- ########## -->
+
     </services>
 
 </container>

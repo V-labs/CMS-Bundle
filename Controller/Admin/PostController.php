@@ -25,8 +25,7 @@ class PostController extends Controller implements TranslationContainerInterface
         /** @var CategoryInterface $category */
         $category = $categoryRepository->find($categoryId);
         $post->setCategory($category);
-        $tagClass = $this->getParameter('vlabs_cms.tag_class');
-        $form = $this->createForm(new PostNewType($postClass, $tagClass), $post);
+        $form = $this->createForm(PostNewType::class, $post);
         $form->handleRequest($request);
         if($form->isValid()){
             $this->get('vlabs_cms.manager.post')->save($post);
@@ -47,8 +46,7 @@ class PostController extends Controller implements TranslationContainerInterface
         $postRepository = $em->getRepository($postClass);
         /** @var PostInterface $post */
         $post = $postRepository->find($id);
-        $tagClass = $this->getParameter('vlabs_cms.tag_class');
-        $form = $this->createForm(new PostEditType($postClass, $tagClass), $post);
+        $form = $this->createForm(PostEditType::class, $post);
         $form->handleRequest($request);
         if($form->isValid()){
             $this->get('vlabs_cms.manager.post')->save($post);

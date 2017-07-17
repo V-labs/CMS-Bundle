@@ -28,8 +28,7 @@ class CategoryController extends Controller implements TranslationContainerInter
         $categoryClass = $this->getParameter('vlabs_cms.category_class');
         /** @var CategoryInterface $category */
         $category = new $categoryClass();
-        $postClass = $this->getParameter('vlabs_cms.post_class');
-        $form = $this->createForm(new CategoryNewType($categoryClass, $postClass), $category);
+        $form = $this->createForm(CategoryNewType::class, $category);
         $form->handleRequest($request);
         if($form->isValid()){
             $this->get('vlabs_cms.manager.category')->save($category);
@@ -44,8 +43,7 @@ class CategoryController extends Controller implements TranslationContainerInter
         $categoryRepository = $em->getRepository($categoryClass);
         /** @var CategoryInterface $category */
         $category = $categoryRepository->find($id);
-        $postClass = $this->getParameter('vlabs_cms.post_class');
-        $form = $this->createForm(new CategoryEditType($categoryClass, $postClass), $category);
+        $form = $this->createForm(CategoryEditType::class, $category);
         $form->handleRequest($request);
         if($form->isValid()){
             $this->get('vlabs_cms.manager.category')->save($category);

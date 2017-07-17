@@ -2,10 +2,12 @@
 
 namespace Vlabs\CmsBundle\Form;
 
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\ChoiceList\View\ChoiceView;
 use Symfony\Component\Form\FormInterface;
 use Symfony\Component\Form\FormView;
+use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Vlabs\CmsBundle\Entity\Category;
 use Vlabs\CmsBundle\Repository\CategoryRepository;
@@ -73,11 +75,11 @@ class CategoryTreeType extends AbstractType
         return $result;
     }
 
-    public function setDefaultOptions(OptionsResolverInterface $resolver)
+    public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
             'class' => $this->categoryClass,
-            'property' => 'name',
+            'choice_label' => 'name',
             'query_builder' => function (CategoryRepository $r) {
                 return $r->createQueryBuilder('c')
                     ->orderBy('c.position');
@@ -87,7 +89,7 @@ class CategoryTreeType extends AbstractType
 
     public function getParent()
     {
-        return 'entity';
+        return EntityType::class;
     }
 
     public function getName()

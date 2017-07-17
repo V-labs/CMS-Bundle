@@ -2,7 +2,7 @@
 
 namespace Vlabs\CmsBundle\Form;
 
-use Symfony\Component\Form\AbstractType;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -17,7 +17,7 @@ class CategoryNewType extends CategoryType
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('parent', 'entity', [
+            ->add('parent', EntityType::class, [
                 'class' => $this->categoryClass,
                 'required' => false
             ]);

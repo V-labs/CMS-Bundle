@@ -2,6 +2,8 @@
 
 namespace Vlabs\CmsBundle\Form;
 
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -16,14 +18,14 @@ class CategoryEditType extends CategoryType
         parent::buildForm($builder, $options);
 
         $builder
-            ->add('section', 'text', [
+            ->add('section', TextType::class, [
                 'label' => 'category_section'
             ])
-            ->add('parent', 'category_parent_tree', [
+            ->add('parent', CategoryParentTreeType::class, [
                 'label' => 'category_parent',
                 'attr' => ['data-placeholder' => '', 'data-select' => 'categoryParent']
             ])
-            ->add('submit', 'submit', [
+            ->add('submit', SubmitType::class, [
                 'label' => 'submit',
                 'attr' => [ 'class' => 'btn-primary' ]
             ]);

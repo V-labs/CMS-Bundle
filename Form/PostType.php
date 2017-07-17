@@ -3,7 +3,10 @@
 namespace Vlabs\CmsBundle\Form;
 
 use Doctrine\ORM\EntityRepository;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\TextareaType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
@@ -25,19 +28,19 @@ class PostType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('title', 'text', [
+            ->add('title', TextType::class, [
                 'label' => 'post_title'
             ])
-            ->add('content', 'textarea', [
+            ->add('content', TextareaType::class, [
                 'label' => 'post_content',
                 'attr' => [
                     'data-editor' => 'postContent'
                 ]
             ])
-            ->add('relatedPosts', 'entity', [
+            ->add('relatedPosts', EntityType::class, [
                 'label' => 'post_related_posts',
                 'class' => $this->postClass,
-                'property' => 'title',
+                'choice_label' => 'title',
                 'attr' => ['data-select' => 'postRelatedPosts'],
                 'multiple' => true,
                 'query_builder' => function (EntityRepository $r) {
@@ -46,10 +49,10 @@ class PostType extends AbstractType
                 },
                 'required' => false
             ])
-            ->add('tags', 'entity', [
+            ->add('tags', EntityType::class, [
                 'label' => 'post_tags',
                 'class' => $this->tagClass,
-                'property' => 'name',
+                'choice_label' => 'name',
                 'attr' => ['data-select' => 'postTags'],
                 'multiple' => true,
                 'query_builder' => function (EntityRepository $r) {
