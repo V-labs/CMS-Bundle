@@ -21,7 +21,7 @@
         <field name="title" type="string" length="255"/>
         <field name="content" type="text" nullable="true"/>
         <field name="slug" type="string" length="255" unique="true">
-            <gedmo:slug fields="title" />
+            <gedmo:slug fields="title" updatable="false" />
         </field>
     </mapped-superclass>
 </doctrine-mapping>

@@ -14,37 +14,37 @@ abstract class Post implements PostInterface
     /**
      * @var integer
      */
-    private $id;
+    protected $id;
 
     /**
      * @var \DateTime
      */
-    private $publishedAt;
+    protected $publishedAt;
 
     /**
      * @var \DateTime
      */
-    private $unpublishedAt;
+    protected $unpublishedAt;
 
     /**
      * @var integer
      */
-    private $position;
+    protected $position;
 
     /**
      * @var string
      */
-    private $title;
+    protected $title;
 
     /**
      * @var string
      */
-    private $content;
+    protected $content;
 
     /**
      * @var string
      */
-    private $slug;
+    protected $slug;
 
     /**
      * Get id
