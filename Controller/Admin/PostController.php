@@ -79,7 +79,7 @@ class PostController extends Controller implements TranslationContainerInterface
         return new Response();
     }
 
-    private function getBackRoute(PostInterface $post)
+    protected function getBackRoute(PostInterface $post)
     {
         return sprintf(
             '%s#category-%d',

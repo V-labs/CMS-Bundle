@@ -69,7 +69,7 @@ class CategoryController extends Controller implements TranslationContainerInter
         return new Response();
     }
 
-    private function getBackRoute(CategoryInterface $category)
+    protected function getBackRoute(CategoryInterface $category)
     {
         return sprintf(
             '%s#category-%d',
