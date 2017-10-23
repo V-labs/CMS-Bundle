@@ -1,0 +1,30 @@
+back: Retour
+category: Catégorie
+category_list: Liste des catégories
+category_edited: Catégorie éditée avec succès
+category_edition: Édition de catégorie
+category_name: Nom de la catégorie
+category_parent: Catégorie parent
+category_section: Section
+confirm_delete: Confirmer la suppression
+delete: Supprimer
+edit: Éditer
+new_category: Nouvelle catégorie
+new_post: Nouvel article
+new_sub_category: Nouvelle sous-catégorie
+post: Article
+post_category: Catégorie
+post_content: Contenu
+post_created: Article créé avec succès
+post_deleted: Article supprimé avec succès
+post_edited: Article édité avec succès
+post_edition: Édition d'article
+post_published_at_%date%_%hour%: Publié le %date% à %hour%
+post_related_posts: Articles associés
+post_tags: Tags
+post_title: Titre
+post_unpublished: Non publié
+post_unpublished_at_%date%_%hour%: Dé-publié le %date% à %hour%
+publish: Publier
+root: Racine
+submit: Valider
