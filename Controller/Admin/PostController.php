@@ -10,6 +10,10 @@ use Symfony\Component\HttpFoundation\Response;
 use Vlabs\CmsBundle\Entity\PostInterface;
 use Vlabs\CmsBundle\Form\PostEditType;
 use Vlabs\CmsBundle\Form\PostNewType;
+use Vlabs\CmsBundle\Entity\CategoryInterface;
+use Vlabs\CmsBundle\Manager\PostManager;
+use Vlabs\CmsBundle\Repository\CategoryRepository;
+
 
 /**
  * Class PostController
@@ -26,22 +30,26 @@ class PostController extends Controller implements TranslationContainerInterface
     public function newAction(Request $request, $categoryId)
     {
         $this->get('vlabs_cms.manager.tag')->normalizeRequest($request);
-        $em = $this->getDoctrine()->getManager();
         $postClass = $this->getParameter('vlabs_cms.post_class');
+        /** @var PostManager $postManager */
+        $postManager = $this->get("vlabs_cms.manager.post");
 
         /** @var PostInterface $post */
         $post = new $postClass();
-        $categoryClass = $this->getParameter('vlabs_cms.category_class');
-        $categoryRepository = $em->getRepository($categoryClass);
+
+        /** @var CategoryRepository $categoryRepository */
+        $categoryRepository = $this->getDoctrine()->getRepository(
+            $this->getParameter('vlabs_cms.category_class')
+        );
 
         /** @var CategoryInterface $category */
         $category = $categoryRepository->find($categoryId);
-        $post->setCategory($category);
+        $postManager->hydratePost($post, $category);
         $form = $this->createForm(PostNewType::class, $post);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $this->get('vlabs_cms.manager.post')->save($post);
+            $postManager->save($post);
             $this->addFlash('success', 'post_created');
 
             return $this->redirect($this->getBackRoute($post));

@@ -3,9 +3,7 @@
 namespace Vlabs\CmsBundle\Manager;
 
 use Doctrine\ORM\EntityManager;
-use Vlabs\CmsBundle\Entity\TagInterface;
-use Symfony\Component\HttpFoundation\Request;
-
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 /**
  * Class BaseManager
  * @package Vlabs\CmsBundle\Manager
@@ -23,14 +21,21 @@ abstract class BaseManager
     protected $entityClass;
 
     /**
+     * @var EventDispatcherInterface
+     */
+    protected  $eventdispatcher;
+
+    /**
      * BaseManager constructor.
      * @param EntityManager $em
      * @param $entityClass
+     * @param EventDispatcherInterface $eventdispatcher
      */
-    function __construct(EntityManager $em, $entityClass)
+    function __construct(EntityManager $em, $entityClass, EventDispatcherInterface $eventdispatcher)
     {
         $this->em = $em;
         $this->entityClass = $entityClass;
+        $this->eventdispatcher = $eventdispatcher;
     }
 
     /**

@@ -22,11 +22,11 @@ class Configuration implements ConfigurationInterface
 
         $rootNode
             ->children()
-            ->scalarNode('category_class')->isRequired()->cannotBeEmpty()->end()
-            ->scalarNode('post_class')->isRequired()->cannotBeEmpty()->end()
-            ->scalarNode('tag_class')->isRequired()->cannotBeEmpty()->end()
-            ->scalarNode('media_class')->cannotBeEmpty()->end()
-            ->arrayNode('colors')->prototype('scalar')->end()
+                ->scalarNode('category_class')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('post_class')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('tag_class')->isRequired()->cannotBeEmpty()->end()
+                ->scalarNode('media_class')->cannotBeEmpty()->end()
+                ->arrayNode('colors')->prototype('scalar')->end()
             ->end();
 
         return $treeBuilder;

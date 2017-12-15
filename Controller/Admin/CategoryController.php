@@ -2,6 +2,7 @@
 
 namespace Vlabs\CmsBundle\Controller\Admin;
 
+use AppBundle\Manager\CategoryManager;
 use JMS\TranslationBundle\Model\Message;
 use JMS\TranslationBundle\Translation\TranslationContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -22,9 +23,10 @@ class CategoryController extends Controller implements TranslationContainerInter
      */
     public function indexAction()
     {
-        $categoryClass = $this->getParameter('vlabs_cms.category_class');
-        $em = $this->getDoctrine()->getManager();
-        $categoryRepository = $em->getRepository($categoryClass);
+        /** @var CategoryRepository $categoryRepository */
+        $categoryRepository = $this->getDoctrine()->getRepository(
+            $this->getParameter('vlabs_cms.category_class')
+        );
 
         return $this->render('VlabsCmsBundle:Admin\Category:index.html.twig', [
             'categories' => $categoryRepository->findAll()
@@ -40,13 +42,16 @@ class CategoryController extends Controller implements TranslationContainerInter
     {
         $categoryClass = $this->getParameter('vlabs_cms.category_class');
 
+        /** @var CategoryManager $categoryManager */
+        $categoryManager = $this->get('vlabs_cms.manager.category');
+
         /** @var CategoryInterface $category */
         $category = new $categoryClass();
         $form = $this->createForm(CategoryNewType::class, $category);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
-            $this->get('vlabs_cms.manager.category')->save($category);
+            $categoryManager->save($category);
         }
 
         return new Response();

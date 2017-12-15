@@ -1,29 +1,25 @@
 <?php
 
 namespace Vlabs\CmsBundle\Manager;
-use Doctrine\ORM\EntityManager;
-use Symfony\Component\EventDispatcher\EventDispatcherInterface;
-use Vlabs\CmsBundle\Entity\Post;
-use Vlabs\CmsBundle\Event\PostEvent;
 
+use Vlabs\CmsBundle\Entity\CategoryInterface;
+use Vlabs\CmsBundle\Entity\Post;
+use Vlabs\CmsBundle\Entity\PostInterface;
+use Vlabs\CmsBundle\Event\PostEvent;
 /**
  * Class PostManager
  * @package Vlabs\CmsBundle\Manager
  */
 class PostManager extends BaseManager
 {
-    private $eventdispatcher;
 
     /**
-     * PostManager constructor.
-     * @param EntityManager $em
-     * @param $entityClass
-     * @param EventDispatcherInterface $eventdispatcher
+     * @param PostInterface $post
+     * @param CategoryInterface $category
      */
-    function __construct(EntityManager $em, $entityClass, EventDispatcherInterface $eventdispatcher)
+    public function hydratePost(PostInterface $post, CategoryInterface $category)
     {
-        parent::__construct($em, $entityClass);
-        $this->eventdispatcher = $eventdispatcher;
+        $post->setCategory($category);
     }
 
     /**
