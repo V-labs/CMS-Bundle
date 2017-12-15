@@ -45,7 +45,7 @@ class PostController extends Controller implements TranslationContainerInterface
         /** @var CategoryInterface $category */
         $category = $categoryRepository->find($categoryId);
         $postManager->hydratePost($post, $category);
-        $form = $this->createForm(PostNewType::class, $post);
+        $form = $this->createForm($this->getParameter('vlabs_cms.form_post_new.type'), $post);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -76,7 +76,7 @@ class PostController extends Controller implements TranslationContainerInterface
 
         /** @var PostInterface $post */
         $post = $postRepository->find($id);
-        $form = $this->createForm(PostEditType::class, $post);
+        $form = $this->createForm($this->getParameter('vlabs_cms.form_post_edit.type'), $post);
         $form->handleRequest($request);
 
         if ($form->isValid()) {

@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Vlabs\CmsBundle\Entity\CategoryInterface;
 use Vlabs\CmsBundle\Form\CategoryEditType;
 use Vlabs\CmsBundle\Form\CategoryNewType;
+use Vlabs\CmsBundle\Repository\CategoryRepository;
 
 /**
  * Class CategoryController
@@ -42,12 +43,13 @@ class CategoryController extends Controller implements TranslationContainerInter
     {
         $categoryClass = $this->getParameter('vlabs_cms.category_class');
 
+
         /** @var CategoryManager $categoryManager */
         $categoryManager = $this->get('vlabs_cms.manager.category');
 
         /** @var CategoryInterface $category */
         $category = new $categoryClass();
-        $form = $this->createForm(CategoryNewType::class, $category);
+        $form = $this->createForm($this->getParameter('vlabs_cms.form_category_new.type'), $category);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -71,7 +73,7 @@ class CategoryController extends Controller implements TranslationContainerInter
 
         /** @var CategoryInterface $category */
         $category = $categoryRepository->find($id);
-        $form = $this->createForm(CategoryEditType::class, $category);
+        $form = $this->createForm($this->getParameter('vlabs_cms.form_category_edit.type'), $category);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
