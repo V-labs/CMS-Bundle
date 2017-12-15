@@ -2,6 +2,10 @@
 
 namespace Vlabs\CmsBundle\Entity;
 
+/**
+ * Class Tag
+ * @package Vlabs\CmsBundle\Entity
+ */
 abstract class Tag implements TagInterface
 {
     /**

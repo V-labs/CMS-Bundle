@@ -19,7 +19,7 @@
                     click: function () {
 
                         var range = $('[data-editor="postContent"]').summernote('createRange');
-                        if (range.toString() == '')  return;
+                        if (range.toString() == '') return;
                         $('[data-editor="postContent"]').data('range', range);
                         $.ajax({
                             url: Routing.generate('vlabs_cms_admin_summernote_modal', {
@@ -32,7 +32,7 @@
                                 var text = range.toString();
 
                                 $('[data-modal="mailto"]').fadeIn();
-                                $('.close', '[data-modal="mailto"]').click(function(){
+                                $('.close', '[data-modal="mailto"]').click(function () {
                                     $('[data-modal="mailto"]').remove();
                                 });
 

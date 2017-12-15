@@ -2,6 +2,10 @@
 
 namespace Vlabs\CmsBundle\Entity;
 
+/**
+ * Interface PostInterface
+ * @package Vlabs\CmsBundle\Entity
+ */
 interface PostInterface
 {
     /**

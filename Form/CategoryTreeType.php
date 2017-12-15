@@ -12,15 +12,28 @@ use Symfony\Component\OptionsResolver\OptionsResolverInterface;
 use Vlabs\CmsBundle\Entity\Category;
 use Vlabs\CmsBundle\Repository\CategoryRepository;
 
+/**
+ * Class CategoryTreeType
+ * @package Vlabs\CmsBundle\Form
+ */
 class CategoryTreeType extends AbstractType
 {
     private $categoryClass;
 
+    /**
+     * CategoryTreeType constructor.
+     * @param $categoryClass
+     */
     function __construct($categoryClass)
     {
         $this->categoryClass = $categoryClass;
     }
 
+    /**
+     * @param FormView $view
+     * @param FormInterface $form
+     * @param array $options
+     */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         $allCategories = [];
@@ -40,6 +53,13 @@ class CategoryTreeType extends AbstractType
         );
     }
 
+    /**
+     * @param $sCategory
+     * @param $aCategories
+     * @param $categories
+     * @param int $level
+     * @return array
+     */
     private function buildTreeChoices($sCategory, $aCategories, $categories, $level = 0)
     {
         $result = array();
@@ -72,9 +92,13 @@ class CategoryTreeType extends AbstractType
                 );
             }
         }
+
         return $result;
     }
 
+    /**
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
@@ -87,11 +111,17 @@ class CategoryTreeType extends AbstractType
         ]);
     }
 
+    /**
+     * @return null|string
+     */
     public function getParent()
     {
         return EntityType::class;
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'category_tree';

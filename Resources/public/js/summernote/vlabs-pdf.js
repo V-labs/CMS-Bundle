@@ -29,7 +29,7 @@
                                 $('body').append(data);
 
                                 $('[data-modal="pdf"]').fadeIn();
-                                $('.close', '[data-modal="pdf"]').click(function(){
+                                $('.close', '[data-modal="pdf"]').click(function () {
                                     $('[data-modal="pdf"]').remove();
                                 });
 

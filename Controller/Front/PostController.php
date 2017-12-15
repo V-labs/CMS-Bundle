@@ -4,8 +4,16 @@ namespace Vlabs\CmsBundle\Controller\Front;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
+/**
+ * Class PostController
+ * @package Vlabs\CmsBundle\Controller\Front
+ */
 class PostController extends Controller
 {
+    /**
+     * @param $slug
+     * @return \Symfony\Component\HttpFoundation\Response
+     */
     public function showAction($slug)
     {
         $em = $this->getDoctrine()->getManager();

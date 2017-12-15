@@ -14,17 +14,34 @@ use Symfony\Component\Translation\Translator;
 use Vlabs\CmsBundle\Entity\Category;
 use Vlabs\CmsBundle\Repository\CategoryRepository;
 
+/**
+ * Class CategoryParentTreeType
+ * @package Vlabs\CmsBundle\Form
+ */
 class CategoryParentTreeType extends AbstractType implements TranslationContainerInterface
 {
+    /**
+     * @var Translator
+     */
     private $translator;
     private $categoryClass;
 
+    /**
+     * CategoryParentTreeType constructor.
+     * @param Translator $translator
+     * @param $categoryClass
+     */
     function __construct(Translator $translator, $categoryClass)
     {
         $this->translator = $translator;
         $this->categoryClass = $categoryClass;
     }
 
+    /**
+     * @param FormView $view
+     * @param FormInterface $form
+     * @param array $options
+     */
     public function buildView(FormView $view, FormInterface $form, array $options)
     {
         /** @var Category $eCategory */
@@ -48,6 +65,14 @@ class CategoryParentTreeType extends AbstractType implements TranslationContaine
         );
     }
 
+    /**
+     * @param $eCategory
+     * @param $sCategory
+     * @param $aCategories
+     * @param $categories
+     * @param int $level
+     * @return array
+     */
     private function buildTreeChoices($eCategory, $sCategory, $aCategories, $categories, $level = 0)
     {
         $result = array();
@@ -57,7 +82,7 @@ class CategoryParentTreeType extends AbstractType implements TranslationContaine
                 null,
                 ' ',
                 $this->translator->trans('root', [], 'vlabs_cms'),
-                [ 'selected' => $sCategory == null ]
+                ['selected' => $sCategory == null]
             );
         }
 
@@ -70,7 +95,7 @@ class CategoryParentTreeType extends AbstractType implements TranslationContaine
                 $category,
                 $category->getId(),
                 str_repeat(' ', $level) . '└ ' . $category->getName(),
-                [ 'selected' => $sCategory == $category ]
+                ['selected' => $sCategory == $category]
             );
             $chCategories = [];
             /** @var Category $chCategory */
@@ -92,9 +117,13 @@ class CategoryParentTreeType extends AbstractType implements TranslationContaine
                 );
             }
         }
+
         return $result;
     }
 
+    /**
+     * @param OptionsResolver $resolver
+     */
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
@@ -108,16 +137,25 @@ class CategoryParentTreeType extends AbstractType implements TranslationContaine
         ]);
     }
 
+    /**
+     * @return null|string
+     */
     public function getParent()
     {
         return EntityType::class;
     }
 
+    /**
+     * @return string
+     */
     public function getName()
     {
         return 'category_parent_tree';
     }
 
+    /**
+     * @return array
+     */
     static function getTranslationMessages()
     {
         return [

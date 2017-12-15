@@ -6,17 +6,33 @@ use Doctrine\ORM\EntityManager;
 use Vlabs\CmsBundle\Entity\TagInterface;
 use Symfony\Component\HttpFoundation\Request;
 
+/**
+ * Class TagManager
+ * @package Vlabs\CmsBundle\Manager
+ */
 class TagManager
 {
+    /**
+     * @var EntityManager
+     */
     private $em;
     private $tagClass;
 
+    /**
+     * TagManager constructor.
+     * @param EntityManager $em
+     * @param $tagClass
+     */
     function __construct(EntityManager $em, $tagClass)
     {
         $this->em = $em;
         $this->tagClass = $tagClass;
     }
 
+    /**
+     * @param Request $request
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
     public function normalizeRequest(Request $request)
     {
         if (!$request->request->has('tags')) {

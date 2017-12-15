@@ -7,6 +7,10 @@ use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class PostEditType
+ * @package Vlabs\CmsBundle\Form
+ */
 class PostEditType extends PostType
 {
     /**
@@ -24,7 +28,7 @@ class PostEditType extends PostType
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'submit',
-                'attr' => [ 'class' => 'btn-primary' ]
+                'attr' => ['class' => 'btn-primary']
             ]);
     }
 

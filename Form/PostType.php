@@ -10,11 +10,26 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class PostType
+ * @package Vlabs\CmsBundle\Form
+ */
 class PostType extends AbstractType
 {
+    /**
+     * @var string
+     */
     protected $postClass;
+    /**
+     * @var string
+     */
     protected $tagClass;
 
+    /**
+     * PostType constructor.
+     * @param string $postClass
+     * @param string $tagClass
+     */
     function __construct($postClass, $tagClass)
     {
         $this->postClass = $postClass;

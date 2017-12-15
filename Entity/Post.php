@@ -5,6 +5,10 @@ namespace Vlabs\CmsBundle\Entity;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
+/**
+ * Class Post
+ * @package Vlabs\CmsBundle\Entity
+ */
 abstract class Post implements PostInterface
 {
     use SoftDeleteableEntity;

@@ -29,7 +29,7 @@
                                 $('body').append(data);
 
                                 $('[data-modal="word"]').fadeIn();
-                                $('.close', '[data-modal="word"]').click(function(){
+                                $('.close', '[data-modal="word"]').click(function () {
                                     $('[data-modal="word"]').remove();
                                 });
 

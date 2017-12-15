@@ -23,14 +23,17 @@
         <service id="vlabs_cms.manager.category" class="Vlabs\CmsBundle\Manager\CategoryManager">
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument>%vlabs_cms.category_class%</argument>
+            <argument type="service" id="event_dispatcher" />
         </service>
         <service id="vlabs_cms.manager.post" class="Vlabs\CmsBundle\Manager\PostManager">
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument>%vlabs_cms.post_class%</argument>
+            <argument type="service" id="event_dispatcher" />
         </service>
         <service id="vlabs_cms.manager.tag" class="Vlabs\CmsBundle\Manager\TagManager">
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument>%vlabs_cms.tag_class%</argument>
+            <argument type="service" id="event_dispatcher" />
         </service>
 
 

@@ -1,4 +1,3 @@
-
 vlabs_cms_admin_summernote_modal:
     path:     /modal/{slug}
     defaults: { _controller: "VlabsCmsBundle:Admin/Summernote:modal" }

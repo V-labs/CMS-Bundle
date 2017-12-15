@@ -2,6 +2,10 @@
 
 namespace Vlabs\CmsBundle\Entity;
 
+/**
+ * Interface TagInterface
+ * @package Vlabs\CmsBundle\Entity
+ */
 interface TagInterface
 {
     /**
