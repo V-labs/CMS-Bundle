@@ -8,12 +8,10 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Vlabs\CmsBundle\Entity\PostInterface;
-use Vlabs\CmsBundle\Form\PostEditType;
-use Vlabs\CmsBundle\Form\PostNewType;
 use Vlabs\CmsBundle\Entity\CategoryInterface;
 use Vlabs\CmsBundle\Manager\PostManager;
 use Vlabs\CmsBundle\Repository\CategoryRepository;
-
+use Vlabs\CmsBundle\Repository\PostRepository;
 
 /**
  * Class PostController
@@ -31,6 +29,7 @@ class PostController extends Controller implements TranslationContainerInterface
     {
         $this->get('vlabs_cms.manager.tag')->normalizeRequest($request);
         $postClass = $this->getParameter('vlabs_cms.post_class');
+
         /** @var PostManager $postManager */
         $postManager = $this->get("vlabs_cms.manager.post");
 
@@ -45,7 +44,7 @@ class PostController extends Controller implements TranslationContainerInterface
         /** @var CategoryInterface $category */
         $category = $categoryRepository->find($categoryId);
         $postManager->hydratePost($post, $category);
-        $form = $this->createForm($this->getParameter('vlabs_cms.form_post_new.type'), $post);
+        $form = $this->createForm($this->getParameter('vlabs_cms.new_post_type'), $post);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
@@ -70,13 +69,15 @@ class PostController extends Controller implements TranslationContainerInterface
     public function editAction(Request $request, $id)
     {
         $this->get('vlabs_cms.manager.tag')->normalizeRequest($request);
-        $em = $this->getDoctrine()->getManager();
-        $postClass = $this->getParameter('vlabs_cms.post_class');
-        $postRepository = $em->getRepository($postClass);
+
+        /** @var PostRepository $postRepository */
+        $postRepository = $this->getDoctrine()->getRepository(
+            $this->getParameter('vlabs_cms.post_class')
+        );
 
         /** @var PostInterface $post */
         $post = $postRepository->find($id);
-        $form = $this->createForm($this->getParameter('vlabs_cms.form_post_edit.type'), $post);
+        $form = $this->createForm($this->getParameter('vlabs_cms.edit_post_type'), $post);
         $form->handleRequest($request);
 
         if ($form->isValid()) {
