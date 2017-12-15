@@ -2,6 +2,7 @@
 
 namespace Vlabs\CmsBundle\Manager;
 
+use Symfony\Component\HttpFoundation\ParameterBag;
 use Vlabs\CmsBundle\Entity\Category;
 use Vlabs\CmsBundle\Event\CategoryEvent;
 /**
@@ -22,11 +23,12 @@ class CategoryManager extends BaseManager
     }
 
     /**
-     * @param $ids
+     * @param ParameterBag $request
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function sort($ids)
+    public function sort(ParameterBag $request)
     {
+        $ids = explode(',', array_keys($request->all())[0]);
         $i = 1;
         foreach ($ids as $id) {
             $category = $this->getRepository()->find($id);

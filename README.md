@@ -181,3 +181,17 @@ class Tag extends BaseTag
     use TagTrait;
 }
 ```
+
+### Step 6 (Optional): Register custom form type
+
+```yaml
+# app/config/config.yml
+// ...
+
+vlabs_cms:
+    ...
+    new_category_type: AppBundle\Form\CategoryNewType
+    edit_category_type: AppBundle\Form\CategoryEditType
+    new_post_type: AppBundle\Form\PostNewType
+    edit_post_type: AppBundle\Form\PostEditType
+```

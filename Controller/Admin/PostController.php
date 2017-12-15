@@ -80,8 +80,12 @@ class PostController extends Controller implements TranslationContainerInterface
         $form = $this->createForm($this->getParameter('vlabs_cms.edit_post_type'), $post);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
-            $this->get('vlabs_cms.manager.post')->save($post);
+        if ($form->isValid())
+        {
+            /** @var PostManager $postManager */
+            $postManager = $this->get("vlabs_cms.manager.post");
+
+            $postManager->save($post);
             $this->addFlash('success', 'post_edited');
 
             return $this->redirect($this->getBackRoute($post));
@@ -100,7 +104,10 @@ class PostController extends Controller implements TranslationContainerInterface
      */
     public function publishAction($id)
     {
-        $this->get('vlabs_cms.manager.post')->togglePublish($id);
+        /** @var PostManager $postManager */
+        $postManager = $this->get("vlabs_cms.manager.post");
+
+        $postManager->togglePublish($id);
 
         return new Response();
     }
@@ -112,7 +119,10 @@ class PostController extends Controller implements TranslationContainerInterface
      */
     public function deleteAction($id)
     {
-        $this->get('vlabs_cms.manager.post')->delete($id);
+        /** @var PostManager $postManager */
+        $postManager = $this->get("vlabs_cms.manager.post");
+
+        $postManager->delete($id);
         $this->addFlash('success', 'post_deleted');
 
         return new Response();
@@ -125,8 +135,10 @@ class PostController extends Controller implements TranslationContainerInterface
      */
     public function sortAction(Request $request)
     {
-        $ids = explode(',', array_keys($request->request->all())[0]);
-        $this->get('vlabs_cms.manager.post')->sort($ids);
+        /** @var PostManager $postManager */
+        $postManager = $this->get("vlabs_cms.manager.post");
+
+        $postManager->sort($request->request);
 
         return new Response();
     }

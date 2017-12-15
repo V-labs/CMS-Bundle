@@ -2,13 +2,13 @@
 
 namespace Vlabs\CmsBundle\Controller\Admin;
 
-use AppBundle\Manager\CategoryManager;
 use JMS\TranslationBundle\Model\Message;
 use JMS\TranslationBundle\Translation\TranslationContainerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Vlabs\CmsBundle\Entity\CategoryInterface;
+use Vlabs\CmsBundle\Manager\CategoryManager;
 use Vlabs\CmsBundle\Repository\CategoryRepository;
 
 /**
@@ -74,8 +74,11 @@ class CategoryController extends Controller implements TranslationContainerInter
         $form = $this->createForm($this->getParameter('vlabs_cms.edit_category_type'), $category);
         $form->handleRequest($request);
 
+        /** @var CategoryManager $categoryManager */
+        $categoryManager = $this->get('vlabs_cms.manager.category');
+
         if ($form->isValid()) {
-            $this->get('vlabs_cms.manager.category')->save($category);
+            $categoryManager->save($category);
             $this->addFlash('success', 'category_edited');
 
             return $this->redirect($this->getBackRoute($category));
@@ -94,7 +97,10 @@ class CategoryController extends Controller implements TranslationContainerInter
      */
     public function deleteAction($id)
     {
-        $this->get('vlabs_cms.manager.category')->delete($id);
+        /** @var CategoryManager $categoryManager */
+        $categoryManager = $this->get('vlabs_cms.manager.category');
+
+        $categoryManager->delete($id);
 
         return new Response();
     }
@@ -106,8 +112,10 @@ class CategoryController extends Controller implements TranslationContainerInter
      */
     public function sortAction(Request $request)
     {
-        $ids = explode(',', array_keys($request->request->all())[0]);
-        $this->get('vlabs_cms.manager.category')->sort($ids);
+        /** @var CategoryManager $categoryManager */
+        $categoryManager = $this->get('vlabs_cms.manager.category');
+
+        $categoryManager->sort($request->request);
 
         return new Response();
     }

@@ -2,6 +2,7 @@
 
 namespace Vlabs\CmsBundle\Manager;
 
+use Symfony\Component\HttpFoundation\ParameterBag;
 use Vlabs\CmsBundle\Entity\CategoryInterface;
 use Vlabs\CmsBundle\Entity\Post;
 use Vlabs\CmsBundle\Entity\PostInterface;
@@ -34,11 +35,12 @@ class PostManager extends BaseManager
     }
 
     /**
-     * @param $ids
+     * @param ParameterBag $request
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function sort($ids)
+    public function sort(ParameterBag $request)
     {
+        $ids = explode(',', array_keys($request->all())[0]);
         $i = 1;
         foreach ($ids as $id) {
             $post = $this->getRepository()->find($id);
