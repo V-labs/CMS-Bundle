@@ -2,6 +2,10 @@
 
 namespace Vlabs\CmsBundle\Entity;
 
+/**
+ * Trait CategoryTrait
+ * @package Vlabs\CmsBundle\Entity
+ */
 trait CategoryTrait
 {
     /**
@@ -71,10 +75,10 @@ trait CategoryTrait
     {
         $publishedPosts = [];
         /** @var PostInterface $post */
-        foreach($this->posts as $post) {
+        foreach ($this->posts as $post) {
             if (is_null($post->getPublishedAt())) continue;
-            if($post->getPublishedAt() > new \DateTime()) continue;
-            $publishedPosts []= $post;
+            if ($post->getPublishedAt() > new \DateTime()) continue;
+            $publishedPosts [] = $post;
         }
         return $publishedPosts;
     }

@@ -7,6 +7,10 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class CategoryEditType
+ * @package Vlabs\CmsBundle\Form
+ */
 class CategoryEditType extends CategoryType
 {
     /**
@@ -27,7 +31,7 @@ class CategoryEditType extends CategoryType
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'submit',
-                'attr' => [ 'class' => 'btn-primary' ]
+                'attr' => ['class' => 'btn-primary']
             ]);
     }
 

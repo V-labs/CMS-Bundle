@@ -5,6 +5,10 @@ namespace Vlabs\CmsBundle\Entity;
 use Gedmo\SoftDeleteable\Traits\SoftDeleteableEntity;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
 
+/**
+ * Class Category
+ * @package Vlabs\CmsBundle\Entity
+ */
 abstract class Category implements CategoryInterface
 {
     use SoftDeleteableEntity;

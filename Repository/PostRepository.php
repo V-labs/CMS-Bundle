@@ -10,6 +10,12 @@ namespace Vlabs\CmsBundle\Repository;
  */
 class PostRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @param $slug
+     * @return mixed
+     * @throws \Doctrine\ORM\NoResultException
+     * @throws \Doctrine\ORM\NonUniqueResultException
+     */
     public function findFront($slug)
     {
         return $this->_em->createQueryBuilder()
@@ -23,6 +29,9 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
             ->getSingleResult();
     }
 
+    /**
+     * @return array
+     */
     public function findLinks()
     {
         return $this->_em->createQueryBuilder()

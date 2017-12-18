@@ -4,6 +4,10 @@ namespace Vlabs\CmsBundle\DependencyInjection;
 
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Vlabs\CmsBundle\Form\CategoryEditType;
+use Vlabs\CmsBundle\Form\CategoryNewType;
+use Vlabs\CmsBundle\Form\PostEditType;
+use Vlabs\CmsBundle\Form\PostNewType;
 
 /**
  * This is the class that validates and merges configuration from your app/config files
@@ -27,8 +31,11 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('tag_class')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('media_class')->cannotBeEmpty()->end()
                 ->arrayNode('colors')->prototype('scalar')->end()
-            ->end()
-        ;
+                ->scalarNode('new_category_type')->defaultValue(CategoryNewType::class)->end()
+                ->scalarNode('edit_category_type')->defaultValue(CategoryEditType::class)->end()
+                ->scalarNode('new_post_type')->defaultValue(PostNewType::class)->end()
+                ->scalarNode('edit_post_type')->defaultValue(PostEditType::class)->end()
+            ->end();
 
         return $treeBuilder;
     }

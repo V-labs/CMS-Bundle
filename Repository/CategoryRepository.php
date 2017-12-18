@@ -12,6 +12,9 @@ use Vlabs\CmsBundle\Entity\CategoryInterface;
  */
 class CategoryRepository extends \Doctrine\ORM\EntityRepository
 {
+    /**
+     * @return array
+     */
     public function findAll()
     {
         $categories = $this->_em->createQueryBuilder()
@@ -29,14 +32,19 @@ class CategoryRepository extends \Doctrine\ORM\EntityRepository
         return $this->getRootCategories($categories);
     }
 
+    /**
+     * @param array $categories
+     * @return array
+     */
     private function getRootCategories(array $categories)
     {
         $rootCategories = [];
         /** @var CategoryInterface $category */
         foreach ($categories as $category) {
             if ($category->getParent()) continue;
-            $rootCategories []= $category;
+            $rootCategories [] = $category;
         }
+
         return $rootCategories;
     }
 }

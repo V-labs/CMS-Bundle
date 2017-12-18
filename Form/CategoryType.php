@@ -8,11 +8,26 @@ use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class CategoryType
+ * @package Vlabs\CmsBundle\Form
+ */
 class CategoryType extends AbstractType
 {
+    /**
+     * @var string
+     */
     protected $categoryClass;
+    /**
+     * @var string
+     */
     protected $postClass;
 
+    /**
+     * CategoryType constructor.
+     * @param string $categoryClass
+     * @param string $postClass
+     */
     function __construct($categoryClass, $postClass)
     {
         $this->categoryClass = $categoryClass;

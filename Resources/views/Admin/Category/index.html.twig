@@ -2,7 +2,8 @@
 
 {% block content %}
 
-    <button class="btn btn-sm btn-primary" data-new="category" data-title="{{ 'new_category'|trans({}, 'vlabs_cms') }}" data-placeholder="{{ 'category_name'|trans({}, 'vlabs_cms') }}">
+    <button class="btn btn-sm btn-primary" data-new="category" data-title="{{ 'new_category'|trans({}, 'vlabs_cms') }}"
+            data-placeholder="{{ 'category_name'|trans({}, 'vlabs_cms') }}">
         <i class="fa fa-fw fa-plus"></i>
         <span>{{ 'new_category'|trans({}, 'vlabs_cms') }}</span>
     </button>
@@ -12,7 +13,8 @@
             <div class="panel" id="{{ category.id }}">
                 <div class="panel-heading" id="category-heading-{{ category.id }}">
                     {% if category.posts|length or category.children|length %}
-                        <a data-toggle="collapse" data-parent=".vlabs-cms-categories" href="#category-{{ category.id }}"  class="vlabs-cms-icon">
+                        <a data-toggle="collapse" data-parent=".vlabs-cms-categories" href="#category-{{ category.id }}"
+                           class="vlabs-cms-icon">
                             <i class="fa fa-fw fa-caret-right"></i>
                         </a>
                     {% else %}
@@ -21,7 +23,8 @@
                     {% include 'VlabsCmsBundle:Admin/Category:heading.html.twig' %}
                 </div>
                 {% if category.posts|length or category.children|length %}
-                    <div class="collapse" id="category-{{ category.id }}" aria-labelledby="category-heading-{{ category.id }}">
+                    <div class="collapse" id="category-{{ category.id }}"
+                         aria-labelledby="category-heading-{{ category.id }}">
                         {% if category.posts|length %}
                             <ul data-sort="post">
                                 {% for post in category.posts %}

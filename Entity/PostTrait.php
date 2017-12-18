@@ -2,6 +2,10 @@
 
 namespace Vlabs\CmsBundle\Entity;
 
+/**
+ * Trait PostTrait
+ * @package Vlabs\CmsBundle\Entity
+ */
 trait PostTrait
 {
     /**

@@ -6,6 +6,10 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
+/**
+ * Class CategoryNewType
+ * @package Vlabs\CmsBundle\Form
+ */
 class CategoryNewType extends CategoryType
 {
     /**

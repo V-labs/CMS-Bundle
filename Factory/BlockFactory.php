@@ -5,6 +5,10 @@ namespace Vlabs\CmsBundle\Factory;
 use Doctrine\ORM\EntityManager;
 use Symfony\Component\HttpFoundation\ParameterBag;
 
+/**
+ * Class BlockFactory
+ * @package Vlabs\CmsBundle\Factory
+ */
 class BlockFactory
 {
     /**
@@ -32,7 +36,6 @@ class BlockFactory
      */
     private $mediaClass;
 
-
     /**
      * @param EntityManager $em
      * @param $categoryClass
@@ -49,11 +52,16 @@ class BlockFactory
         $this->mediaClass = $mediaClass;
     }
 
+    /**
+     * @param $slug
+     * @param ParameterBag $parameterBag
+     * @return array
+     */
     function getParameters($slug, ParameterBag $parameterBag)
     {
         $parameters = [];
 
-        switch($slug){
+        switch ($slug) {
             case 'style':
                 $parameters['color'] = $parameterBag->get('color');
                 $parameters['text'] = $parameterBag->get('text');

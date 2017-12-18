@@ -2,6 +2,10 @@
 
 namespace Vlabs\CmsBundle\Entity;
 
+/**
+ * Trait TagTrait
+ * @package Vlabs\CmsBundle\Entity
+ */
 trait TagTrait
 {
     /**

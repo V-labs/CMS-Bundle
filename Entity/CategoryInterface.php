@@ -2,6 +2,10 @@
 
 namespace Vlabs\CmsBundle\Entity;
 
+/**
+ * Interface CategoryInterface
+ * @package Vlabs\CmsBundle\Entity
+ */
 interface CategoryInterface
 {
     /**

@@ -31,11 +31,11 @@
 
                                 var text = range.toString();
 
-                                $('[data-modal="url"]').fadeIn(function(){
+                                $('[data-modal="url"]').fadeIn(function () {
                                     $('input', this).select();
                                 });
 
-                                $('.close', '[data-modal="url"]').click(function(){
+                                $('.close', '[data-modal="url"]').click(function () {
                                     $('[data-modal="url"]').remove();
                                 });
 

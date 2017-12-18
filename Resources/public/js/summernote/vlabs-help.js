@@ -25,7 +25,7 @@
                             type: 'GET',
                             success: function (data) {
                                 var $modal = $(data);
-                                $modal.find('.close').click(function(){
+                                $modal.find('.close').click(function () {
                                     $modal.fadeOut();
                                 });
                                 $('body').append($modal);

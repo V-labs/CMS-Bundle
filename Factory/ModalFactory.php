@@ -4,6 +4,10 @@ namespace Vlabs\CmsBundle\Factory;
 
 use Doctrine\ORM\EntityManager;
 
+/**
+ * Class ModalFactory
+ * @package Vlabs\CmsBundle\Factory
+ */
 class ModalFactory
 {
     /**
@@ -37,11 +41,12 @@ class ModalFactory
     private $colors;
 
     /**
+     * ModalFactory constructor.
      * @param EntityManager $em
      * @param $categoryClass
-     * @param $postClass
-     * @param $tagClass
-     * @param $mediaClass
+     * @param string $postClass
+     * @param string $tagClass
+     * @param string $mediaClass
      * @param array $colors
      */
     function __construct(EntityManager $em, $categoryClass, $postClass, $tagClass, $mediaClass, array $colors)
@@ -54,6 +59,10 @@ class ModalFactory
         $this->colors = $colors;
     }
 
+    /**
+     * @param $slug
+     * @return array
+     */
     function getParameters($slug)
     {
         $parameters = [];
@@ -72,6 +81,7 @@ class ModalFactory
                 $parameters['colors'] = $this->colors;
                 break;
         }
+
         return $parameters;
     }
 }

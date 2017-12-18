@@ -13,8 +13,8 @@
         <field name="updatedAt" type="datetime">
             <gedmo:timestampable on="update"/>
         </field>
-        <field name="deletedAt" type="datetime" nullable="true" />
-        <gedmo:soft-deleteable field-name="deletedAt" time-aware="false" />
+        <field name="deletedAt" type="datetime" nullable="true"/>
+        <gedmo:soft-deleteable field-name="deletedAt" time-aware="false"/>
         <field name="name" type="string" length="255"/>
         <field name="section" type="string" length="50" nullable="true"/>
         <field name="position" type="integer" nullable="true"/>
