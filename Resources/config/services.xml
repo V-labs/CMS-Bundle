@@ -5,14 +5,14 @@
            xsi:schemaLocation="http://symfony.com/schema/dic/services http://symfony.com/schema/dic/services/services-1.0.xsd">
 
     <services>
-        <service id="vlabs_cms.factory.block" class="Vlabs\CmsBundle\Factory\BlockFactory">
+        <service id="vlabs_cms.factory.block" class="Vlabs\CmsBundle\Factory\BlockFactory" public="true">
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument>%vlabs_cms.category_class%</argument>
             <argument>%vlabs_cms.post_class%</argument>
             <argument>%vlabs_cms.tag_class%</argument>
             <argument>%vlabs_cms.media_class%</argument>
         </service>
-        <service id="vlabs_cms.factory.modal" class="Vlabs\CmsBundle\Factory\ModalFactory">
+        <service id="vlabs_cms.factory.modal" class="Vlabs\CmsBundle\Factory\ModalFactory" public="true">
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument>%vlabs_cms.category_class%</argument>
             <argument>%vlabs_cms.post_class%</argument>
@@ -20,17 +20,17 @@
             <argument>%vlabs_cms.media_class%</argument>
             <argument>%vlabs_cms.colors%</argument>
         </service>
-        <service id="vlabs_cms.manager.category" class="Vlabs\CmsBundle\Manager\CategoryManager">
+        <service id="vlabs_cms.manager.category" class="Vlabs\CmsBundle\Manager\CategoryManager" public="true">
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument>%vlabs_cms.category_class%</argument>
             <argument type="service" id="event_dispatcher" />
         </service>
-        <service id="vlabs_cms.manager.post" class="Vlabs\CmsBundle\Manager\PostManager">
+        <service id="vlabs_cms.manager.post" class="Vlabs\CmsBundle\Manager\PostManager" public="true">
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument>%vlabs_cms.post_class%</argument>
             <argument type="service" id="event_dispatcher" />
         </service>
-        <service id="vlabs_cms.manager.tag" class="Vlabs\CmsBundle\Manager\TagManager">
+        <service id="vlabs_cms.manager.tag" class="Vlabs\CmsBundle\Manager\TagManager" public="true">
             <argument type="service" id="doctrine.orm.entity_manager"/>
             <argument>%vlabs_cms.tag_class%</argument>
             <argument type="service" id="event_dispatcher" />

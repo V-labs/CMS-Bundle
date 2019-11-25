@@ -30,7 +30,7 @@ class Configuration implements ConfigurationInterface
                 ->scalarNode('post_class')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('tag_class')->isRequired()->cannotBeEmpty()->end()
                 ->scalarNode('media_class')->cannotBeEmpty()->end()
-                ->arrayNode('colors')->prototype('scalar')->end()
+                ->arrayNode('colors')->prototype('scalar')->end()->end()
                 ->scalarNode('new_category_type')->defaultValue(CategoryNewType::class)->end()
                 ->scalarNode('edit_category_type')->defaultValue(CategoryEditType::class)->end()
                 ->scalarNode('new_post_type')->defaultValue(PostNewType::class)->end()

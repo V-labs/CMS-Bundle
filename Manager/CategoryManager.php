@@ -2,6 +2,8 @@
 
 namespace Vlabs\CmsBundle\Manager;
 
+use Doctrine\ORM\EntityManager;
+use Symfony\Component\EventDispatcher\EventDispatcherInterface;
 use Symfony\Component\HttpFoundation\ParameterBag;
 use Vlabs\CmsBundle\Entity\Category;
 use Vlabs\CmsBundle\Event\CategoryEvent;
@@ -11,11 +13,16 @@ use Vlabs\CmsBundle\Event\CategoryEvent;
  */
 class CategoryManager extends BaseManager
 {
+    public function __construct(EntityManager $em, $entityClass, EventDispatcherInterface $eventdispatcher)
+    {
+        parent::__construct($em, $entityClass, $eventdispatcher);
+    }
+
     /**
      * @param Category $category
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function save(Category $category)
+    public function save($category)
     {
         $this->eventdispatcher->dispatch(CategoryEvent::PRE_CREATE, new CategoryEvent($category));
         parent::save($category);

@@ -27,7 +27,7 @@ class PostManager extends BaseManager
      * @param Post $post
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function save(Post $post)
+    public function save($post)
     {
         $this->eventdispatcher->dispatch(PostEvent::PRE_CREATE, new PostEvent($post));
         parent::save($post);
