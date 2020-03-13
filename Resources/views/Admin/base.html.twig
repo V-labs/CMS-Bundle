@@ -1,4 +1,4 @@
-{% extends 'VlabsCmsBundle::base.html.twig' %}
+{% extends '@VlabsCms/base.html.twig' %}
 
 {% block stylesheets %}
 
@@ -17,7 +17,7 @@
 {% endblock %}
 
 {% block flash %}
-    {{ include('VlabsCmsBundle:Admin:flash.html.twig') }}
+    {{ include('@VlabsCms/Admin/flash.html.twig') }}
 {% endblock %}
 
 {% block javascripts %}

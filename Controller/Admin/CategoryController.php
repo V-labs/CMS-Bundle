@@ -27,7 +27,7 @@ class CategoryController extends Controller implements TranslationContainerInter
             $this->getParameter('vlabs_cms.category_class')
         );
 
-        return $this->render('VlabsCmsBundle:Admin\Category:index.html.twig', [
+        return $this->render('@VlabsCms/Admin/Category/index.html.twig', [
             'categories' => $categoryRepository->findAll()
         ]);
     }
@@ -84,7 +84,7 @@ class CategoryController extends Controller implements TranslationContainerInter
             return $this->redirect($this->getBackRoute($category));
         }
 
-        return $this->render('VlabsCmsBundle:Admin\Category:edit.html.twig', [
+        return $this->render('@VlabsCms/Admin/Category/edit.html.twig', [
             'form' => $form->createView(),
             'back' => $this->getBackRoute($category)
         ]);

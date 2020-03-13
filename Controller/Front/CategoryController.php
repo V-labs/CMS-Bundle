@@ -19,7 +19,7 @@ class CategoryController extends Controller
         $em = $this->getDoctrine()->getManager();
         $categoryRepository = $em->getRepository($categoryClass);
 
-        return $this->render('VlabsCmsBundle:Front\Category:index.html.twig', [
+        return $this->render('@VlabsCms/Front/Category/index.html.twig', [
             'categories' => $categoryRepository->findAll()
         ]);
     }

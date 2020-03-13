@@ -54,7 +54,7 @@ class PostController extends Controller implements TranslationContainerInterface
             return $this->redirect($this->getBackRoute($post));
         }
 
-        return $this->render('VlabsCmsBundle:Admin\Post:new.html.twig', [
+        return $this->render('@VlabsCms/Admin/Post/new.html.twig', [
             'form' => $form->createView(),
             'back' => $this->getBackRoute($post)
         ]);
@@ -91,7 +91,7 @@ class PostController extends Controller implements TranslationContainerInterface
             return $this->redirect($this->getBackRoute($post));
         }
 
-        return $this->render('VlabsCmsBundle:Admin\Post:edit.html.twig', [
+        return $this->render('@VlabsCms/Admin/Post/edit.html.twig', [
             'form' => $form->createView(),
             'back' => $this->getBackRoute($post)
         ]);

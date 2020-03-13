@@ -1,4 +1,4 @@
-{% extends "VlabsCmsBundle:Admin:base.html.twig" %}
+{% extends "@VlabsCms/Admin/base.html.twig" %}
 
 {% block content %}
 
@@ -20,7 +20,7 @@
                     {% else %}
                         <i class="fa fa-fw"></i>
                     {% endif %}
-                    {% include 'VlabsCmsBundle:Admin/Category:heading.html.twig' %}
+                    {% include '@VlabsCms/Admin/Category/heading.html.twig' %}
                 </div>
                 {% if category.posts|length or category.children|length %}
                     <div class="collapse" id="category-{{ category.id }}"
@@ -28,14 +28,14 @@
                         {% if category.posts|length %}
                             <ul data-sort="post">
                                 {% for post in category.posts %}
-                                    {% include 'VlabsCmsBundle:Admin/Post:show.html.twig' %}
+                                    {% include '@VlabsCms/Admin/Post/show.html.twig' %}
                                 {% endfor %}
                             </ul>
                         {% endif %}
                         {% if category.children|length %}
                             <ul data-sort="category">
                                 {% for category in category.children %}
-                                    {% include 'VlabsCmsBundle:Admin/Category:show.html.twig' %}
+                                    {% include '@VlabsCms/Admin/Category/show.html.twig' %}
                                 {% endfor %}
                             </ul>
                         {% endif %}

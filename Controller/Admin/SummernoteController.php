@@ -26,7 +26,7 @@ class SummernoteController extends Controller
 
         $params = $modalFactory->getParameters($slug, $request->query);
 
-        return $this->render(sprintf('VlabsCmsBundle:Admin\Summernote\Modal:%s.html.twig', $slug), $params);
+        return $this->render(sprintf('@VlabsCms/Admin/Summernote/Modal/%s.html.twig', $slug), $params);
     }
 
     /**
@@ -41,7 +41,7 @@ class SummernoteController extends Controller
 
         $params = $modalFactory->getParameters($slug, $request->query);
 
-        return $this->render(sprintf('VlabsCmsBundle:Admin\Summernote\Block:%s.html.twig', $slug), $params);
+        return $this->render(sprintf('@VlabsCms/Admin/Summernote/Block/%s.html.twig', $slug), $params);
     }
 
     /**

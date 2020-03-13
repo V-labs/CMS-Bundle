@@ -18,7 +18,7 @@ class PostController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        return $this->render('VlabsCmsBundle:Front\Post:show.html.twig', [
+        return $this->render('@VlabsCms/Front/Post/show.html.twig', [
             'post' => $em
                 ->getRepository($this->getParameter('vlabs_cms.post_class'))
                 ->findFront($slug),
