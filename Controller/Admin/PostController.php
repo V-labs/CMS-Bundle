@@ -81,7 +81,6 @@ class PostController extends Controller implements TranslationContainerInterface
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-        {
             /** @var PostManager $postManager */
             $postManager = $this->get("vlabs_cms.manager.post");
 
