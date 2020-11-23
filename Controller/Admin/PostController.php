@@ -47,7 +47,7 @@ class PostController extends Controller implements TranslationContainerInterface
         $form = $this->createForm($this->getParameter('vlabs_cms.new_post_type'), $post);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $postManager->save($post);
             $this->addFlash('success', 'post_created');
 
@@ -80,7 +80,7 @@ class PostController extends Controller implements TranslationContainerInterface
         $form = $this->createForm($this->getParameter('vlabs_cms.edit_post_type'), $post);
         $form->handleRequest($request);
 
-        if ($form->isValid())
+        if ($form->isSubmitted() && $form->isValid()) {
         {
             /** @var PostManager $postManager */
             $postManager = $this->get("vlabs_cms.manager.post");

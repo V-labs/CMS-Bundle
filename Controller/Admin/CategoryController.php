@@ -49,7 +49,7 @@ class CategoryController extends Controller implements TranslationContainerInter
         $form = $this->createForm($this->getParameter('vlabs_cms.new_category_type'), $category);
         $form->handleRequest($request);
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $categoryManager->save($category);
         }
 
@@ -77,7 +77,7 @@ class CategoryController extends Controller implements TranslationContainerInter
         /** @var CategoryManager $categoryManager */
         $categoryManager = $this->get('vlabs_cms.manager.category');
 
-        if ($form->isValid()) {
+        if ($form->isSubmitted() && $form->isValid()) {
             $categoryManager->save($category);
             $this->addFlash('success', 'category_edited');
 
