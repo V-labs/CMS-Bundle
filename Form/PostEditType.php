@@ -41,7 +41,8 @@ class PostEditType extends PostType
             'method' => 'PUT',
             'allow_extra_fields' => true,
             'data_class' => $this->postClass,
-            'translation_domain' => 'vlabs_cms'
+            'translation_domain' => 'vlabs_cms',
+            'attr' => ['novalidate' => 'novalidate']
         ]);
     }
 }

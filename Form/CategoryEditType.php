@@ -27,7 +27,7 @@ class CategoryEditType extends CategoryType
             ])
             ->add('parent', CategoryParentTreeType::class, [
                 'label' => 'category_parent',
-                'attr' => ['data-placeholder' => '', 'data-select' => 'categoryParent']
+                'attr' => ['data-select' => 'categoryParent']
             ])
             ->add('submit', SubmitType::class, [
                 'label' => 'submit',
@@ -44,7 +44,8 @@ class CategoryEditType extends CategoryType
             'method' => 'PUT',
             'allow_extra_fields' => true,
             'data_class' => $this->categoryClass,
-            'translation_domain' => 'vlabs_cms'
+            'translation_domain' => 'vlabs_cms',
+            'attr' => ['novalidate' => 'novalidate']
         ]);
     }
 }

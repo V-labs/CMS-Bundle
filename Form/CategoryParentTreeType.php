@@ -80,7 +80,7 @@ class CategoryParentTreeType extends AbstractType implements TranslationContaine
         if (!$level) {
             $result[] = new ChoiceView(
                 null,
-                ' ',
+                '',
                 $this->translator->trans('root', [], 'vlabs_cms'),
                 ['selected' => $sCategory == null]
             );
