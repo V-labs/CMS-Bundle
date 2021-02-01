@@ -5,6 +5,7 @@ namespace Vlabs\CmsBundle\Controller\Admin;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Vlabs\CmsBundle\Factory\BlockFactory;
 use Vlabs\CmsBundle\Factory\ModalFactory;
 use Vlabs\MediaBundle\Form\MediaType;
 
@@ -36,10 +37,10 @@ class SummernoteController extends Controller
      */
     public function blockAction(Request $request, $slug)
     {
-        /** @var ModalFactory $modalFactory */
-        $modalFactory = $this->get('vlabs_cms.factory.modal');
+        /** @var BlockFactory $blockFactory */
+        $blockFactory = $this->get('vlabs_cms.factory.block');
 
-        $params = $modalFactory->getParameters($slug, $request->query);
+        $params = $blockFactory->getParameters($slug, $request->query);
 
         return $this->render(sprintf('@VlabsCms/Admin/Summernote/Block/%s.html.twig', $slug), $params);
     }
